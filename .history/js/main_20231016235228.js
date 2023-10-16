@@ -90,29 +90,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 4. Distribution slide
 
-let progressPercentage = 40;
 let progressInterval;
-
-function startProgressBar() {
-  clearInterval(progressInterval);
-  $('.progress-bar').css('width', '0%');
-  
-  let totalWidth = parseInt($('.progress-container').css('width'));
-  let maxProgressWidth = (totalWidth * progressPercentage) / 100;
-  
-  let increment = (maxProgressWidth / 2) / 50;
-  
-  progressInterval = setInterval(function() {
-    let currentWidth = parseInt($('.progress-bar').css('width'));
-    
-    if (currentWidth < maxProgressWidth) {
-      $('.progress-bar').css('width', currentWidth + increment + 'px');
-    } else {
-      clearInterval(progressInterval);
-      $('.text-list').slick('slickNext');
-    }
-  }, 20);
-}
+let slideIndex = 0;
+const progressRates = [40, 20, 20, 20]; // 첫 번째 슬라이드는 40%, 나머지는 20%
 
 $('.text-list').slick({
   slidesToShow: 3,
@@ -121,25 +101,29 @@ $('.text-list').slick({
   dots: false,
   autoplay: false,
   infinite: true,
-}).on('init', function(event, slick){
-  // 초기화 후 첫 번째 슬라이드에 active-slide 클래스 추가
-  $('.text-list .slick-slide:first-child').addClass('active-slide');
-  startProgressBar();  // 초기화시 프로그레스바 시작
-}).on('beforeChange', function(event, slick, currentSlide, nextSlide){
-  // 모든 슬라이드의 활성화 상태를 제거합니다.
+}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
   $('.text-list .slick-slide').removeClass('active-slide');
-  // 다음에 활성화될 슬라이드에 active-slide 클래스 추가
   $(`.text-list .slick-slide[data-slick-index="${nextSlide}"]`).addClass('active-slide');
-}).on('afterChange', function(event, slick, currentSlide) {
-  startProgressBar();
+
+  // 프로그레스 바 리셋 및 슬라이드 인덱스 업데이트
+  $('.progress-bar').css('width', '0%');
+  slideIndex = (slideIndex + 1) % progressRates.length;
+}).on('init', function(event, slick) {
+  $('.text-list .slick-slide:first-child').addClass('active-slide');
 });
 
-$(document).ready(function() {
-  $('.text-list').slick('slickGoTo', 0);  // 첫 번째 슬라이드로 이동
-});
-
-
-
+// 프로그레스 바 업데이트
+progressInterval = setInterval(function() {
+  let currentWidth = parseInt($('.progress-bar').css('width'));
+  let totalWidth = parseInt($('.progress-container').css('width'));
+  let targetWidth = (totalWidth * progressRates[slideIndex]) / 100;
+  
+  if (currentWidth < targetWidth) {
+      $('.progress-bar').css('width', currentWidth + (totalWidth/100) + 'px');  // 50은 2000ms / 40ms 
+  } else {
+      $('.text-list').slick('slickNext');
+  }
+}, 100);
 
 // 5.biobank_Tab
 $(document).ready(function() {

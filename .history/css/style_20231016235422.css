@@ -829,12 +829,11 @@ background: #fff;
 
 .progress-bar {
     width: 0;
-    height: 6px;
+    height: 5px;
     background-color: #fff;
     position: absolute;
-    top: -2px;
+    top: 0;
     left: 0;
-    /* transition: width 2s ease-in-out; */
 }
 
 /* Biobanks */

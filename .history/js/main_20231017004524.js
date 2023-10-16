@@ -90,17 +90,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 4. Distribution slide
 
-let progressPercentage = 40;
-let progressInterval;
+let progressPercentage = 40; 
+let progressInterval; // 프로그레스바 업데이트를 위한 변수
 
 function startProgressBar() {
-  clearInterval(progressInterval);
-  $('.progress-bar').css('width', '0%');
+  clearInterval(progressInterval); // 현재 진행 중인 인터벌을 중지
+  $('.progress-bar').css('width', '0%'); // 프로그레스 바 초기화
   
   let totalWidth = parseInt($('.progress-container').css('width'));
   let maxProgressWidth = (totalWidth * progressPercentage) / 100;
   
-  let increment = (maxProgressWidth / 2) / 50;
+  let increment = maxProgressWidth / 100; // 2초 동안 40%를 채우기 위해 20ms 마다 증가하는 크기
   
   progressInterval = setInterval(function() {
     let currentWidth = parseInt($('.progress-bar').css('width'));
@@ -108,10 +108,10 @@ function startProgressBar() {
     if (currentWidth < maxProgressWidth) {
       $('.progress-bar').css('width', currentWidth + increment + 'px');
     } else {
-      clearInterval(progressInterval);
-      $('.text-list').slick('slickNext');
+      clearInterval(progressInterval); // 40%에 도달하면 인터벌을 중지
+      $('.text-list').slick('slickNext'); // 다음 슬라이드로 전환
     }
-  }, 20);
+  }, 20); // 2초 동안 40%를 채우기 위해 20ms 간격으로 업데이트
 }
 
 $('.text-list').slick({
@@ -119,24 +119,15 @@ $('.text-list').slick({
   slidesToScroll: 1,
   arrows: false,
   dots: false,
-  autoplay: false,
+  autoplay: false, // 자동 재생 기능을 끕니다.
   infinite: true,
-}).on('init', function(event, slick){
-  // 초기화 후 첫 번째 슬라이드에 active-slide 클래스 추가
+}).on('afterChange', function(event, slick, currentSlide, nextSlide) {
+  startProgressBar(); // 슬라이드 전환이 완료되면 프로그레스 바 시작
+}).on('init', function(event, slick) {
   $('.text-list .slick-slide:first-child').addClass('active-slide');
-  startProgressBar();  // 초기화시 프로그레스바 시작
-}).on('beforeChange', function(event, slick, currentSlide, nextSlide){
-  // 모든 슬라이드의 활성화 상태를 제거합니다.
-  $('.text-list .slick-slide').removeClass('active-slide');
-  // 다음에 활성화될 슬라이드에 active-slide 클래스 추가
-  $(`.text-list .slick-slide[data-slick-index="${nextSlide}"]`).addClass('active-slide');
-}).on('afterChange', function(event, slick, currentSlide) {
-  startProgressBar();
+  startProgressBar(); // 슬라이더 초기화 후 프로그레스 바 시작
 });
 
-$(document).ready(function() {
-  $('.text-list').slick('slickGoTo', 0);  // 첫 번째 슬라이드로 이동
-});
 
 
 

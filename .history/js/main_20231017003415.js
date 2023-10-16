@@ -90,53 +90,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 4. Distribution slide
 
-let progressPercentage = 40;
-let progressInterval;
-
-function startProgressBar() {
-  clearInterval(progressInterval);
-  $('.progress-bar').css('width', '0%');
-  
-  let totalWidth = parseInt($('.progress-container').css('width'));
-  let maxProgressWidth = (totalWidth * progressPercentage) / 100;
-  
-  let increment = (maxProgressWidth / 2) / 50;
-  
-  progressInterval = setInterval(function() {
-    let currentWidth = parseInt($('.progress-bar').css('width'));
-    
-    if (currentWidth < maxProgressWidth) {
-      $('.progress-bar').css('width', currentWidth + increment + 'px');
-    } else {
-      clearInterval(progressInterval);
-      $('.text-list').slick('slickNext');
-    }
-  }, 20);
-}
+let progressPercentage = 40; 
 
 $('.text-list').slick({
   slidesToShow: 3,
   slidesToScroll: 1,
   arrows: false,
   dots: false,
-  autoplay: false,
+  autoplay: true,
+  autoplaySpeed: 2000,  // 2초 동안 슬라이드 전환 속도 조절
   infinite: true,
-}).on('init', function(event, slick){
-  // 초기화 후 첫 번째 슬라이드에 active-slide 클래스 추가
-  $('.text-list .slick-slide:first-child').addClass('active-slide');
-  startProgressBar();  // 초기화시 프로그레스바 시작
-}).on('beforeChange', function(event, slick, currentSlide, nextSlide){
-  // 모든 슬라이드의 활성화 상태를 제거합니다.
+}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
   $('.text-list .slick-slide').removeClass('active-slide');
-  // 다음에 활성화될 슬라이드에 active-slide 클래스 추가
   $(`.text-list .slick-slide[data-slick-index="${nextSlide}"]`).addClass('active-slide');
-}).on('afterChange', function(event, slick, currentSlide) {
-  startProgressBar();
+  
+  // 프로그레스 바 리셋
+  $('.progress-bar').css('width', '0%');
+}).on('init', function(event, slick) {
+  $('.text-list .slick-slide:first-child').addClass('active-slide');
+}).on('afterChange', function() {
+  // 슬라이드가 전환된 후 프로그레스바 채움 시작
+  $('.progress-bar').css('width', progressPercentage + '%');
 });
 
-$(document).ready(function() {
-  $('.text-list').slick('slickGoTo', 0);  // 첫 번째 슬라이드로 이동
-});
 
 
 

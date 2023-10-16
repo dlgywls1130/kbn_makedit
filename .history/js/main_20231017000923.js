@@ -90,53 +90,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 4. Distribution slide
 
-let progressPercentage = 40;
-let progressInterval;
-
-function startProgressBar() {
-  clearInterval(progressInterval);
-  $('.progress-bar').css('width', '0%');
-  
-  let totalWidth = parseInt($('.progress-container').css('width'));
-  let maxProgressWidth = (totalWidth * progressPercentage) / 100;
-  
-  let increment = (maxProgressWidth / 2) / 50;
-  
-  progressInterval = setInterval(function() {
-    let currentWidth = parseInt($('.progress-bar').css('width'));
-    
-    if (currentWidth < maxProgressWidth) {
-      $('.progress-bar').css('width', currentWidth + increment + 'px');
-    } else {
-      clearInterval(progressInterval);
-      $('.text-list').slick('slickNext');
-    }
-  }, 20);
-}
+let progressPercentage = 40; // 프로그레스바가 채워질 최대 비율
 
 $('.text-list').slick({
   slidesToShow: 3,
   slidesToScroll: 1,
   arrows: false,
   dots: false,
-  autoplay: false,
+  autoplay: true,
+  autoplaySpeed: 2000, // 이 값을 조정하여 슬라이드 전환 속도를 조절할 수 있습니다.
   infinite: true,
-}).on('init', function(event, slick){
-  // 초기화 후 첫 번째 슬라이드에 active-slide 클래스 추가
-  $('.text-list .slick-slide:first-child').addClass('active-slide');
-  startProgressBar();  // 초기화시 프로그레스바 시작
-}).on('beforeChange', function(event, slick, currentSlide, nextSlide){
-  // 모든 슬라이드의 활성화 상태를 제거합니다.
+}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
   $('.text-list .slick-slide').removeClass('active-slide');
-  // 다음에 활성화될 슬라이드에 active-slide 클래스 추가
   $(`.text-list .slick-slide[data-slick-index="${nextSlide}"]`).addClass('active-slide');
-}).on('afterChange', function(event, slick, currentSlide) {
-  startProgressBar();
+
+  // 프로그레스 바 리셋
+  $('.progress-bar').css('width', '0%');
+}).on('init', function(event, slick) {
+  $('.text-list .slick-slide:first-child').addClass('active-slide');
 });
 
-$(document).ready(function() {
-  $('.text-list').slick('slickGoTo', 0);  // 첫 번째 슬라이드로 이동
-});
+// 프로그레스 바 업데이트
+setInterval(function() {
+  let currentWidth = parseInt($('.progress-bar').css('width'));
+  let totalWidth = parseInt($('.progress-container').css('width'));
+  let maxProgressWidth = (totalWidth * progressPercentage) / 100; // 계산된 최대 프로그레스바 너비
+
+  if (currentWidth < maxProgressWidth) {
+      $('.progress-bar').css('width', currentWidth + (maxProgressWidth/20) + 'px');  // 프로그레스바의 증가량을 조절합니다.
+  } else {
+      $('.text-list').slick('slickNext'); // 프로그레스 바가 40%에 도달하면 다음 슬라이드로 전환
+  }
+}, 200);
 
 
 

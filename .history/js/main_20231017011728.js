@@ -121,22 +121,17 @@ $('.text-list').slick({
   dots: false,
   autoplay: false,
   infinite: true,
-}).on('init', function(event, slick){
-  // 초기화 후 첫 번째 슬라이드에 active-slide 클래스 추가
-  $('.text-list .slick-slide:first-child').addClass('active-slide');
-  startProgressBar();  // 초기화시 프로그레스바 시작
-}).on('beforeChange', function(event, slick, currentSlide, nextSlide){
-  // 모든 슬라이드의 활성화 상태를 제거합니다.
+}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+  let activeSlide = nextSlide;
   $('.text-list .slick-slide').removeClass('active-slide');
-  // 다음에 활성화될 슬라이드에 active-slide 클래스 추가
-  $(`.text-list .slick-slide[data-slick-index="${nextSlide}"]`).addClass('active-slide');
+  $(`.text-list .slick-slide[data-slick-index="${activeSlide}"]`).addClass('active-slide');
 }).on('afterChange', function(event, slick, currentSlide) {
+  startProgressBar();
+}).on('init', function(event, slick) {
+  $('.text-list .slick-slide:first-child').addClass('active-slide');
   startProgressBar();
 });
 
-$(document).ready(function() {
-  $('.text-list').slick('slickGoTo', 0);  // 첫 번째 슬라이드로 이동
-});
 
 
 

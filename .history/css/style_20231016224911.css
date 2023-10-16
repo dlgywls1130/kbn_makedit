@@ -820,22 +820,6 @@ background: #fff;
     width: 100%;
 }
 
-.progress-container {
-    width: 100%;
-    background-color: #fff;
-    height: 2px;
-    position: relative;
-}
-
-.progress-bar {
-    width: 0;
-    height: 6px;
-    background-color: #fff;
-    position: absolute;
-    top: -2px;
-    left: 0;
-    /* transition: width 2s ease-in-out; */
-}
 
 /* Biobanks */
 
@@ -970,9 +954,10 @@ ul.tabs li.current{
 .logo_loop{
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
     padding:20px 0;
 }
-
 .roling_list{
     height: 100%;
     width: auto;
