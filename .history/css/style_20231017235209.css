@@ -1118,7 +1118,6 @@ ul.tabs li:hover{
     position: absolute;
     right: 6%;
     bottom: 0;
-    cursor: pointer;
 }
 
 .biobank_top_flex{
@@ -1154,20 +1153,18 @@ height: 20px;
 
 .logo_loop{
     width: 100%;
-    height: 100px;
+    height: 100%;
     padding:20px 0;
 }
 
 .roling_list{
-    height: 55px!important;
+    height: 100%;
     width: auto;
-    margin: 0 0.5rem;
 }
 
 .roling_list img{
     width: 100%;
     height: 100%;
-    object-fit: contain;
 }
 
 /* footer */

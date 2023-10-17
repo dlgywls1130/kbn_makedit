@@ -1118,7 +1118,6 @@ ul.tabs li:hover{
     position: absolute;
     right: 6%;
     bottom: 0;
-    cursor: pointer;
 }
 
 .biobank_top_flex{
@@ -1159,9 +1158,8 @@ height: 20px;
 }
 
 .roling_list{
-    height: 55px!important;
+    height: 60px;
     width: auto;
-    margin: 0 0.5rem;
 }
 
 .roling_list img{

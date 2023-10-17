@@ -208,7 +208,7 @@ $('.rolling_slide').slick({
   autoplay: true,
   autoplaySpeed: 0, // 기본 속도를 0으로 설정
   cssEase: 'linear', // 선형 애니메이션 사용
-  speed: 4000, // 이동 속도. 원하는 대로 조정하실 수 있습니다.
+  speed: 5000, // 이동 속도. 원하는 대로 조정하실 수 있습니다.
   infinite: true,
   pauseOnHover: false, // 마우스 오버시 멈춤 방지
   swipe: false, // 스와이프 기능 방지

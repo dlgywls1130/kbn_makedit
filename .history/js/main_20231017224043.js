@@ -1,26 +1,20 @@
 // 1. main banner
 
 $('.slide_wrap').on('init', function(event, slick) {
-  // 첫 로드 시 첫 번째 슬라이드에만 애니메이션 적용
-  $(slick.$slides[0]).find('.slide_bg_img').css('animation', 'none');
-  setTimeout(function() {
-      $(slick.$slides[0]).find('.slide_bg_img').css('animation', 'zoomOut 2s forwards');
-  }, 10);
+  // 첫 슬라이드에 애니메이션 적용
+  $(slick.$slides[0]).find('.slide_zoom').css('animation', 'zoomOut 2s forwards');
 }).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-    // 모든 슬라이드의 애니메이션을 초기화합니다.
-    $(slick.$slides).find('.slide_bg_img').css('animation', 'none');
-}).on('afterChange', function(event, slick, currentSlide) {
-    // 현재 슬라이드에만 애니메이션을 적용합니다.
-    setTimeout(function() {
-        $(slick.$slides[currentSlide]).find('.slide_bg_img').css('animation', 'zoomOut 2s forwards');
-    }, 10);
+  // 현재 슬라이드의 애니메이션 초기화
+  $(slick.$slides[currentSlide]).find('.slide_zoom').css('animation', 'none');
+
+  // 다음 슬라이드에 애니메이션 적용
+  $(slick.$slides[nextSlide]).find('.slide_zoom').css('animation', 'zoomOut 2s forwards');
 }).slick({
   slidesToShow: 1,
   arrows: true,
   dots: true,
   autoplay: true,
-  autoplaySpeed: 1500,
-  fade: true,
+  autoplaySpeed: 2000,
   infinite: true,
   prevArrow: '<div class="arrow slick-prev"></div>',
   nextArrow: '<div class="arrow slick-next"></div>',
@@ -29,7 +23,6 @@ $('.slide_wrap').on('init', function(event, slick) {
       return '<button>' + titles[i] + '</button>';
   }
 });
-
 
 
 
@@ -161,42 +154,22 @@ $(document).ready(function() {
 
 // 5.biobank_Tab
 $(document).ready(function() {
-    
-  // 탭 클릭 시의 로직
   $('ul.tabs li').click(function() {
       var tab_id = $(this).attr('data-tab');
-      var $tabContent = $("#" + tab_id);
-      var $biobankWrapper = $('.biobank_tab_wrapper');
 
+      // 만약 현재 탭이 이미 활성화된 상태라면
       if ($(this).hasClass('current')) {
           $(this).removeClass('current');
-          $tabContent.removeClass('current');
+          $("#" + tab_id).removeClass('current');
       } else {
           $('ul.tabs li').removeClass('current');
           $('.tab-content').removeClass('current');
 
           $(this).addClass('current');
-          $tabContent.addClass('current');
-          
-          // 스크롤 애니메이션
-          $('html, body').animate({
-              scrollTop: $biobankWrapper.offset().top
-          }, 500);
-          
-          // biobank_top 버튼 보이기
-          $('.biobank_top').fadeIn();
+          $("#" + tab_id).addClass('current');
       }
   });
-  
-  // biobank_top 버튼 클릭 시의 로직
-  $('.biobank_top').click(function() {
-      $('html, body').animate({
-          scrollTop: $('.biobank_wrap').offset().top
-      }, 500);
-  });
 });
-
-
 
 
 // 6. rolling banner
@@ -204,14 +177,10 @@ $('.rolling_slide').slick({
   slidesToShow: 7,
   slidesToScroll: 1,
   arrows: false,
-  dots: false,
+  dots:false,
   autoplay: true,
-  autoplaySpeed: 0, // 기본 속도를 0으로 설정
-  cssEase: 'linear', // 선형 애니메이션 사용
-  speed: 4000, // 이동 속도. 원하는 대로 조정하실 수 있습니다.
-  infinite: true,
-  pauseOnHover: false, // 마우스 오버시 멈춤 방지
-  swipe: false, // 스와이프 기능 방지
+autoplaySpeed: 2000,
+infinite: true,
 });
 
 
@@ -243,60 +212,4 @@ spyEls.forEach(function (spyEl) {
     .setClassToggle(spyEl, 'show') // 요소가 화면에 보이면 show 클래스 추가
     .addTo(new ScrollMagic.Controller()) // 컨트롤러에 장면을 할당(필수!)
 })
-
-
-//9.sample count animation
-
-let hasAnimated = false; // 애니메이션이 한 번만 실행되게 하기 위한 플래그
-
-const counters = document.querySelectorAll('.right_span p');
-const sampleSection = document.querySelector('#sample');
-
-const observer = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting && !hasAnimated) {
-        animateCounters();
-        hasAnimated = true;
-    }
-}, {
-    threshold: 0.1  // 적어도 10%의 타겟 요소가 뷰포트에 들어왔을 때 알림
-});
-
-observer.observe(sampleSection);
-
-function animateCounters() {
-    const animationDuration = 2000; // 2 seconds
-    const updateFrequency = 50; // milliseconds
-
-    counters.forEach(counter => {
-        function updateCounter() {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText.replace(/,/g, '');  // 콤마 제거
-            const increment = (target / (animationDuration / updateFrequency));
-
-            if (count < target) {
-                counter.innerText = addCommas(Math.min(count + increment, target).toFixed(0));
-                setTimeout(updateCounter, updateFrequency);
-            } else {
-                counter.innerText = addCommas(target.toFixed(0));
-            }
-        }
-
-        function addCommas(nStr) {
-            nStr += '';
-            const x = nStr.split('.');
-            let x1 = x[0];
-            const x2 = x.length > 1 ? '.' + x[1] : '';
-            const rgx = /(\d+)(\d{3})/;
-            while (rgx.test(x1)) {
-                x1 = x1.replace(rgx, '$1' + ',' + '$2');
-            }
-            return x1 + x2;
-        }
-
-        const target = +counter.getAttribute('data-target');
-        counter.innerText = '0';
-        updateCounter();
-    });
-}
-
 

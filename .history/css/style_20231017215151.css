@@ -126,14 +126,6 @@ section{margin-bottom:150px;}
     transform: translateX(150px);
 }
 
-.back-to-position.to-up {
-    transform: translateY(150px);
-}
-
-.back-to-position.to-down {
-    transform: translateY(-150px);
-}
-
 .show .back-to-position {
     opacity: 1;
     transform: translateX(0);
@@ -272,57 +264,31 @@ header{
 
 /* main_banner */
 
-.slide_list {
-    height: 100vh;
-    overflow: hidden;
-}
-
 .slide_wrap .slide_list{
     width: 100%;
     height: 100vh;
     position: relative;
 }
 
-.slide_zoom {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-}
-
-.slide_bg_img{
-    width: 120%;
-    height: 120%;
-    overflow: hidden;
-    animation-timing-function: ease-in-out;
-}
-
-.slick-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.slide_wrap .slide_zoom.first-slide .slide_bg_img{
+.slide_wrap .slide_list.first-slide{
     background: url('../image/main_slide1.jpg');
     background-repeat: no-repeat;
     background-position: right center;
-    animation: zoomOut 2s forwards;
-
+    background-size: cover;
 }
 
-.slide_wrap .slide_zoom.second-slide .slide_bg_img{
+.slide_wrap .slide_list.second-slide{
     background: url('../image/main_slide2.jpg');
     background-repeat: no-repeat;
     background-position: center center;
-    animation: zoomOut 2s forwards;
+    background-size: cover;
 }
 
-.slide_wrap .slide_zoom.three-slide .slide_bg_img{
+.slide_wrap .slide_list.three-slide{
     background: url('../image/main_slide3.jpg');
     background-repeat: no-repeat;
     background-position: left center;
-    animation: zoomOut 2s forwards;
+    background-size: cover;
 }
 
 .slide_content{
@@ -403,18 +369,19 @@ top: 55%;
     border-right: 8px solid #fff; /* 선 두께 */
 }
 
-@keyframes zoomOut {
+@keyframes bgZoomOut {
     0% {
-        transform: scale(1.1);
+        background-size: 110% 110%;
     }
     100% {
-        transform: scale(1);
+        background-size: 100% 100%;
     }
 }
 
 .slide_wrap .slide_list {
-    animation: zoomOut 2s forwards; /* 2s는 애니메이션 지속 시간입니다. 조정 가능합니다. */
+    animation: bgZoomOut 2s;
 }
+
 /* about us */
 .about-us{
     max-width: 1680px;
@@ -838,17 +805,7 @@ top: 55%;
     color: var(--main-text);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-.counter {
-    animation: fadeIn 1s ease-in-out forwards;
-}
+
 
 /* Distribution */
 
@@ -1006,7 +963,6 @@ background: #fff;
     font-weight: 300px;
     line-height: 40px;
     color: #fff;
-    cursor: pointer;
 }
 
 .biobank_content .tab-link:first-child{
@@ -1017,8 +973,7 @@ background: #fff;
     border-radius: 0 0 50px  0;
 }
 
-ul.tabs li.current,
-ul.tabs li:hover{
+ul.tabs li.current{
     background: rgba(30, 43, 117,0.8);
 }
 
@@ -1050,20 +1005,14 @@ ul.tabs li:hover{
 .tab-biobank .biobank_list .biobank_img{
     width: 100%;
     height: auto;
-    overflow: hidden;
 }
 
 .tab-biobank .biobank_list .biobank_img img{
     width: 100%;
     height: 100%;
     border-radius: 50px 0 0 0;
-    transition: transform 0.3s ease-in-out; 
 }
 
-.tab-biobank .biobank_list .biobank_img img:hover{
-    transform: scale(1.2);
-
-}
 .tab-biobank .biobank_list .biobank_contnet{
     padding: 30px 25px;
 }
@@ -1109,65 +1058,23 @@ ul.tabs li:hover{
     font-weight: 300;
 }
 
-.biobank_top{
-    display: none;
-    width: 132px;
-    height: 132px;
-    border-radius: 50%;
-    background: var(--main-text);
-    position: absolute;
-    right: 6%;
-    bottom: 0;
-    cursor: pointer;
-}
-
-.biobank_top_flex{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.biobank_top svg{
-    width: 100%;
-    height: 100%;
-    fill: #fff;
-}
-
-.biobank_wrap{
-    position: relative;
-}
-.biobank_wrap .top-scroll_img{
-width: 20px;
-height: 20px;
-
-}
-
-.biobank_wrap p{
-    font-size: 20px;
-    color: #fff;
-}
 
 /* logo slide */
 
 .logo_loop{
     width: 100%;
-    height: 100px;
+    height: 100%;
     padding:20px 0;
 }
 
 .roling_list{
-    height: 55px!important;
+    height: 100%;
     width: auto;
-    margin: 0 0.5rem;
 }
 
 .roling_list img{
     width: 100%;
     height: 100%;
-    object-fit: contain;
 }
 
 /* footer */
