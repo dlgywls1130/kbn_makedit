@@ -1027,6 +1027,24 @@ background: #fff;
 
 }
 
+.progress-container:before, .progress-container:after {
+    content: "";
+    width: 10px; /* 네모 상자의 너비 */
+    height: 6px; /* 네모 상자의 높이 */
+    background-color: #fff;
+    position: absolute;
+    top: -2px;
+}
+
+.marker {
+    width: 10px; /* 네모 상자의 너비 */
+    height: 6px; /* 네모 상자의 높이 */
+    background-color: #fff;
+    position: absolute;
+    top: -2px;
+}
+
+
 /* Biobanks */
 
 .biobank_content{
