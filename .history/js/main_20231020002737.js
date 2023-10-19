@@ -91,113 +91,87 @@ document.addEventListener('DOMContentLoaded', function() {
       button.addEventListener('click', function(e) {
           let popupId = e.target.getAttribute('data-location') + '-popup';
           let popup = document.getElementById(popupId);
-          
-          // 모든 팝업을 숨기고, 모든 버튼의 active 클래스를 제거합니다.
-          document.querySelectorAll('.popup').forEach(function(p) {
-              p.style.display = 'none';
-          });
-          document.querySelectorAll('.location').forEach(function(b) {
-              b.classList.remove('active');
-          });
-          
           if(popup) {
-              if(window.innerWidth <= 768) { // 모바일 환경
-                  popup.style.left = '50%';
-                  popup.style.top = '80%';
-                  popup.style.transform = 'translate(-50%, -50%)';
-              } else { // 웹 환경
-                  popup.style.left = e.target.offsetLeft + 'px';
-                  popup.style.top = e.target.offsetTop + e.target.offsetHeight + 'px';
-                  popup.style.transform = '';
-              }
+              // 모든 팝업을 숨깁니다.
+              document.querySelectorAll('.popup').forEach(function(p) {
+                  p.style.display = 'none';
+              });
+
+              // 클릭한 버튼의 위치를 기반으로 팝업의 위치를 설정합니다.
+              popup.style.left = e.target.offsetLeft + 'px';
+              popup.style.top = e.target.offsetTop + e.target.offsetHeight + 'px';
               
-              // 팝업을 표시하고, 버튼에 active 클래스를 추가합니다.
+              // 팝업을 표시합니다.
               popup.style.display = 'block';
-              e.target.classList.add('active');
           }
       });
   });
 
   closeButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-          let parentPopup = this.closest('.popup');
-          if(parentPopup) {
-              parentPopup.style.display = 'none'; // 팝업을 숨깁니다.
-              
-              // 모든 버튼의 active 클래스를 제거합니다.
-              document.querySelectorAll('.location').forEach(function(b) {
-                  b.classList.remove('active');
-              });
-          }
-      });
-  });
+    button.addEventListener('click', function() {
+        let parentPopup = this.closest('.popup'); // 가장 가까운 .popup 부모 요소를 찾습니다.
+        if(parentPopup) {
+            parentPopup.style.display = 'none'; // 팝업을 숨깁니다.
+        }
+    });
 });
-
+});
 
 
 // 4. Distribution slide
 
 let startPercentage = 0;
-let progressPercentage;
+let progressPercentage = 30;
 let progressInterval;
-
-function isMobile() {
-    return window.innerWidth <= 768;
-}
-
-// 페이지 로딩 시 디바이스 타입 확인
-const mobileDevice = isMobile();
-
-// 모바일 환경이면 progressPercentage를 100으로, 아니면 30으로 설정
-progressPercentage = mobileDevice ? 100 : 30;
 
 function startProgressBar() {
   clearInterval(progressInterval);
-
+  
   let totalWidth = parseInt($('.progress-container').css('width'));
-  let startWidth = (totalWidth * startPercentage) / 100;
+  let startWidth = (totalWidth * startPercentage) / 100; // 시작 위치 계산
   $('.progress-bar').css('width', startWidth + 'px');
-
+  
   let maxProgressWidth = (totalWidth * progressPercentage) / 100;
+  let increment = (maxProgressWidth - startWidth) / 500; // 증가량을 작게 조정
   
-  // 총 2000ms 동안 진행하므로, 10ms마다 인터벌을 실행하게 설정
-  const intervalDuration = 10; 
-  const totalIntervals = 5000 / intervalDuration;
-  let increment = (maxProgressWidth - startWidth) / totalIntervals; 
-
   progressInterval = setInterval(function() {
-      let currentWidth = parseInt($('.progress-bar').css('width'));
-  
-      if (currentWidth < maxProgressWidth) {
-          $('.progress-bar').css('width', currentWidth + increment + 'px');
-      } else {
-          clearInterval(progressInterval);
-          $('.text-list').slick('slickNext');
-      }
-  }, intervalDuration);
+    let currentWidth = parseInt($('.progress-bar').css('width'));
+    
+    if (currentWidth < maxProgressWidth) {
+      $('.progress-bar').css('width', currentWidth + increment + 'px');
+    } else {
+      clearInterval(progressInterval);
+      $('.text-list').slick('slickNext');
+    }
+  }, 1); // 인터벌 시간을 줄임
 }
 
-let slideConfig = {
-    slidesToShow: mobileDevice ? 1 : 3,
-    slidesToScroll: 1,
-    arrows: false,
-    dots: false,
-    autoplay: false,
-    infinite: true
-};
 
-$('.text-list').slick(slideConfig).on('init', function(event, slick) {
-    $('.text-list .slick-slide:first-child').addClass('active-slide');
-    startProgressBar();
-}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-    $('.text-list .slick-slide').removeClass('active-slide');
-    $(`.text-list .slick-slide[data-slick-index="${nextSlide}"]`).addClass('active-slide');
+
+
+
+$('.text-list').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  arrows: false,
+  dots: false,
+  autoplay: false,
+  infinite: true,
+}).on('init', function(event, slick){
+  // 초기화 후 첫 번째 슬라이드에 active-slide 클래스 추가
+  $('.text-list .slick-slide:first-child').addClass('active-slide');
+  startProgressBar();  // 초기화시 프로그레스바 시작
+}).on('beforeChange', function(event, slick, currentSlide, nextSlide){
+  // 모든 슬라이드의 활성화 상태를 제거합니다.
+  $('.text-list .slick-slide').removeClass('active-slide');
+  // 다음에 활성화될 슬라이드에 active-slide 클래스 추가
+  $(`.text-list .slick-slide[data-slick-index="${nextSlide}"]`).addClass('active-slide');
 }).on('afterChange', function(event, slick, currentSlide) {
-    startProgressBar();
+  startProgressBar();
 });
 
 $(document).ready(function() {
-    $('.text-list').slick('slickGoTo', 0);
+  $('.text-list').slick('slickGoTo', 0);  // 첫 번째 슬라이드로 이동
 });
 
 
@@ -212,7 +186,7 @@ $(document).ready(function() {
               $('.tab-content .tab-biobank').slick({
                   dots: false,
                   arrows: false,
-                  infinite: false,
+                  infinite: true,
                   slidesToShow: 1,
                   slidesToScroll: 1
               });
@@ -225,15 +199,13 @@ $(document).ready(function() {
   }
 
   function updateSlideNumber() {
-    $('.tab-content .tab-biobank').each(function() {
-        if ($(this).hasClass('slick-initialized')) {
-            var currentSlide = $(this).slick('slickCurrentSlide') + 1;
-            var totalSlides = $(this).slick('getSlick').slideCount;
-            var slideInfo = currentSlide + '/' + totalSlides;
-            $(this).siblings('.slide-number').text(slideInfo);
-        }
-    });
-}
+      if ($('.tab-content .tab-biobank').hasClass('slick-initialized')) {
+          var currentSlide = $('.tab-content .tab-biobank').slick('slickCurrentSlide') + 1;
+          var totalSlides = $('.tab-content .tab-biobank').slick('getSlick').slideCount;
+          var slideInfo = currentSlide + '/' + totalSlides;
+          $('#slide-number').text(slideInfo);
+      }
+  }
 
   $('.tab-content .tab-biobank').on('afterChange', function() {
       updateSlideNumber();

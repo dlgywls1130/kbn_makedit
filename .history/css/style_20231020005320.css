@@ -607,8 +607,7 @@ top: 55%;
     justify-content: center;
 }
 
-.location:hover,
-.location.active{
+.location:hover{
     -webkit-box-shadow: 0px 1px 16px 4px rgba(255,255,255,0.48); 
 box-shadow: 0px 1px 16px 4px rgba(255,255,255,0.48);
 }
@@ -1813,8 +1812,6 @@ footer{
 
     .popup .popup_body p{
         padding: 10px 25px 10px 33px;
-        font-size: 15px;
-        line-height: 20px;
     }
 
     .popup .popup_body p::before{
@@ -1864,7 +1861,6 @@ footer{
 
     .distribution_wrap{
         padding: 50px 10px;
-        height: 900px;
     }
 
     .biobank_wrap{
@@ -2019,13 +2015,15 @@ footer{
     height: 100px;
 }
 
+.text_list_top{
+    width: 100%;
+}
 
 .text_list_top br{
     display: none;
 }
 .text_list_title p{
     font-size: 20px;
-    line-height: 30px;
 }
 
 .text_slide{
@@ -2034,16 +2032,10 @@ footer{
 
 .text-dual_list{
     font-size: 15px;
-    margin-top: 80px;
-    line-height:20px;
-    padding-left: 2.4%;
+    margin-top: 50px;
 }
-
-.text-dual_list br{display: none;}
 
 .line_middle{
-    top: 71%;
+    top: 50%;
 }
-
-.text_list_title span{width: 30px; height: 30px; font-size: 15px;}
 }

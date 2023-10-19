@@ -607,8 +607,7 @@ top: 55%;
     justify-content: center;
 }
 
-.location:hover,
-.location.active{
+.location:hover{
     -webkit-box-shadow: 0px 1px 16px 4px rgba(255,255,255,0.48); 
 box-shadow: 0px 1px 16px 4px rgba(255,255,255,0.48);
 }
@@ -1002,7 +1001,7 @@ background: #fff;
     position: absolute;
     width: 100%;
     height: 12px;
-    top: 68%;
+    top: 60%;
     transform: translate(0,-50%);
 }
 
@@ -1078,10 +1077,8 @@ ul.tabs li:hover{
 .biobank_tab_wrapper{
     max-width: 1680px;
     margin: 0 auto;
-    position: relative;
 
 }
-
 
 .tab-content{
     display: none;
@@ -1172,10 +1169,10 @@ ul.tabs li:hover{
     height: 132px;
     border-radius: 50%;
     background: var(--main-text);
-    position: sticky;
-    bottom: 2%;
+    position: absolute;
+    right: 6%;
+    bottom: -5%;
     cursor: pointer;
-    left: 89%;
 }
 
 .biobank_top_flex{
@@ -1207,6 +1204,9 @@ height: 20px;
     color: #fff;
 }
 
+.mobile_tab{
+    display: none;
+}
 
 .pc_tab{display: block;}
 
@@ -1813,8 +1813,6 @@ footer{
 
     .popup .popup_body p{
         padding: 10px 25px 10px 33px;
-        font-size: 15px;
-        line-height: 20px;
     }
 
     .popup .popup_body p::before{
@@ -1864,7 +1862,6 @@ footer{
 
     .distribution_wrap{
         padding: 50px 10px;
-        height: 900px;
     }
 
     .biobank_wrap{
@@ -1881,6 +1878,12 @@ footer{
         font-size: 15px;
         line-height: 18px;
     }
+
+    .mobile_tab{
+        display: block;
+    }
+
+    .pc_tab{display: none;}
 
 
     .footer_wrap{
@@ -1909,7 +1912,6 @@ footer{
     .footer_phone{
         font-size: 25px;
         margin: 5px 0;
-        text-align: center;
     }
 
     .footer-logo1{
@@ -1978,72 +1980,4 @@ footer{
     justify-content: space-between;
     width: 100%;
 }
-
-.biobank_top {
-    display: none;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: var(--main-text);
-    position: absolute;
-    right: unset;
-    bottom: -3%;
-    cursor: pointer;
-    left: 50%;
-    transform: translate(-50%,0);
-}
-
-.biobank_wrap .biobank_top p {
-    font-size: 10px;
-}
-
-.biobank_wrap .top-scroll_img {
-    width: 15px;
-    height: 15px;
-}
-
-.biobank_content-title{
-    font-size: 15px;
-    height: 60px;
-}
-
-.biobank_content_descript p{
-    font-size: 15px;
-    line-height: 20px;
-}
-
-.biobank_content_descript {
-    display: flex;
-    align-items: flex-start;
-    padding-top: 30px;
-    height: 100px;
-}
-
-
-.text_list_top br{
-    display: none;
-}
-.text_list_title p{
-    font-size: 20px;
-    line-height: 30px;
-}
-
-.text_slide{
-    margin-top: 120px;
-}
-
-.text-dual_list{
-    font-size: 15px;
-    margin-top: 80px;
-    line-height:20px;
-    padding-left: 2.4%;
-}
-
-.text-dual_list br{display: none;}
-
-.line_middle{
-    top: 71%;
-}
-
-.text_list_title span{width: 30px; height: 30px; font-size: 15px;}
 }

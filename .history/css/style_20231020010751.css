@@ -1813,8 +1813,6 @@ footer{
 
     .popup .popup_body p{
         padding: 10px 25px 10px 33px;
-        font-size: 15px;
-        line-height: 20px;
     }
 
     .popup .popup_body p::before{

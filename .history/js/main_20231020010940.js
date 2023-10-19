@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if(popup) {
               if(window.innerWidth <= 768) { // 모바일 환경
                   popup.style.left = '50%';
-                  popup.style.top = '80%';
+                  popup.style.top = '60%';
                   popup.style.transform = 'translate(-50%, -50%)';
               } else { // 웹 환경
                   popup.style.left = e.target.offsetLeft + 'px';

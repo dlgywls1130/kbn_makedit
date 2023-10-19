@@ -91,48 +91,31 @@ document.addEventListener('DOMContentLoaded', function() {
       button.addEventListener('click', function(e) {
           let popupId = e.target.getAttribute('data-location') + '-popup';
           let popup = document.getElementById(popupId);
-          
-          // 모든 팝업을 숨기고, 모든 버튼의 active 클래스를 제거합니다.
-          document.querySelectorAll('.popup').forEach(function(p) {
-              p.style.display = 'none';
-          });
-          document.querySelectorAll('.location').forEach(function(b) {
-              b.classList.remove('active');
-          });
-          
           if(popup) {
-              if(window.innerWidth <= 768) { // 모바일 환경
-                  popup.style.left = '50%';
-                  popup.style.top = '80%';
-                  popup.style.transform = 'translate(-50%, -50%)';
-              } else { // 웹 환경
-                  popup.style.left = e.target.offsetLeft + 'px';
-                  popup.style.top = e.target.offsetTop + e.target.offsetHeight + 'px';
-                  popup.style.transform = '';
-              }
+              // 모든 팝업을 숨깁니다.
+              document.querySelectorAll('.popup').forEach(function(p) {
+                  p.style.display = 'none';
+              });
+
+              // 클릭한 버튼의 위치를 기반으로 팝업의 위치를 설정합니다.
+              popup.style.left = e.target.offsetLeft + 'px';
+              popup.style.top = e.target.offsetTop + e.target.offsetHeight + 'px';
               
-              // 팝업을 표시하고, 버튼에 active 클래스를 추가합니다.
+              // 팝업을 표시합니다.
               popup.style.display = 'block';
-              e.target.classList.add('active');
           }
       });
   });
 
   closeButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-          let parentPopup = this.closest('.popup');
-          if(parentPopup) {
-              parentPopup.style.display = 'none'; // 팝업을 숨깁니다.
-              
-              // 모든 버튼의 active 클래스를 제거합니다.
-              document.querySelectorAll('.location').forEach(function(b) {
-                  b.classList.remove('active');
-              });
-          }
-      });
-  });
+    button.addEventListener('click', function() {
+        let parentPopup = this.closest('.popup'); // 가장 가까운 .popup 부모 요소를 찾습니다.
+        if(parentPopup) {
+            parentPopup.style.display = 'none'; // 팝업을 숨깁니다.
+        }
+    });
 });
-
+});
 
 
 // 4. Distribution slide
@@ -162,7 +145,7 @@ function startProgressBar() {
   
   // 총 2000ms 동안 진행하므로, 10ms마다 인터벌을 실행하게 설정
   const intervalDuration = 10; 
-  const totalIntervals = 5000 / intervalDuration;
+  const totalIntervals = 2000 / intervalDuration;
   let increment = (maxProgressWidth - startWidth) / totalIntervals; 
 
   progressInterval = setInterval(function() {
