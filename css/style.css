@@ -1027,21 +1027,14 @@ background: #fff;
 
 }
 
-.progress-container:before, .progress-container:after {
-    content: "";
-    width: 10px; /* 네모 상자의 너비 */
-    height: 6px; /* 네모 상자의 높이 */
-    background-color: #fff;
-    position: absolute;
-    top: -2px;
-}
+
 
 .marker {
     width: 10px; /* 네모 상자의 너비 */
-    height: 6px; /* 네모 상자의 높이 */
-    background-color: #fff;
+    height: 10px; /* 네모 상자의 높이 */
+    background-color: rgba(255,255,255,0.5);
     position: absolute;
-    top: -2px;
+    top: -3px;
 }
 
 
@@ -2064,4 +2057,9 @@ footer{
 }
 
 .text_list_title span{width: 30px; height: 30px; font-size: 15px;}
+
+.marker.mo{display: none;}
+.marker {
+left:84%!important;
+}
 }
