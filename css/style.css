@@ -2035,7 +2035,7 @@ footer{
     display: none;
 }
 .text_list_title p{
-    font-size: 20px;
+    font-size: 18px;
     line-height: 30px;
 }
 
@@ -2056,10 +2056,10 @@ footer{
     top: 71%;
 }
 
-.text_list_title span{width: 30px; height: 30px; font-size: 15px;}
+.text_list_title span{width: 25px; height: 25px; font-size: 15px;}
 
 .marker.mo{display: none;}
 .marker {
-left:84%!important;
+left:95%!important;
 }
 }
