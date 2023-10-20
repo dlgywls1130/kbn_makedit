@@ -795,6 +795,8 @@ top: 55%;
     column-gap: .5rem;
 
 }
+
+.map_wrapp{color: #fff; font-size: 20px;}
 .edge_map{    position: absolute; bottom: 5%; right:5%;}
 
 .location.location.seoul{
@@ -2108,4 +2110,8 @@ left:95%!important;
     padding-top: 30px;
     height: auto;
 }
+
+
+.map_wrapp{color: #fff; font-size: 10px;}
+.edge_map{    position: absolute; bottom: 5%; right:1%;}
 }
