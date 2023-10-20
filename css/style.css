@@ -2115,4 +2115,11 @@ left:95%!important;
 
 .map_wrapp{color: #fff; font-size: 10px;}
 .edge_map{    position: absolute; bottom: 5%; right:1%;}
+
+.edge_pointer{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #0F1339;
+}
 }
