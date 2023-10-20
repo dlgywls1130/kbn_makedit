@@ -585,7 +585,7 @@ top: 55%;
 .map-container {
     position: relative;
     width: 100%;
-    height: 1160px;
+    height: 1200px;
     background: url('../image/map.jpg');
     background-size: contain;
     background-repeat: no-repeat;
@@ -607,10 +607,22 @@ top: 55%;
     justify-content: center;
 }
 
-.location:hover,
-.location.active{
+    .location:hover,
+    .location.active{
+        -webkit-box-shadow: 0px 1px 16px 4px rgba(255,255,255,0.48); 
+    box-shadow: 0px 1px 16px 4px rgba(255,255,255,0.48);
+    }
+
+    .location:hover.white-pointer::after,
+.location.active.white-pointer::after,
+.location:hover.left-pointer.blue-pointer::after,
+.location.active.left-pointer.blue-pointer::after,
+.location:hover.right-pointer.blue-pointer::after,
+.location.active.right-pointer.blue-pointer::after,
+.location:hover.orange-pointer::after,
+.location.active.orange-pointer::after {
     -webkit-box-shadow: 0px 1px 16px 4px rgba(255,255,255,0.48); 
-box-shadow: 0px 1px 16px 4px rgba(255,255,255,0.48);
+    box-shadow: 0px 1px 16px 4px rgba(255,255,255,0.48);
 }
 
 .location.blue-line{
@@ -757,6 +769,33 @@ box-shadow: 0px 1px 16px 4px rgba(255,255,255,0.48);
     background-color: #0F1339;
     border: 7px solid #fff;
 }
+
+.edge_pointer{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #0F1339;
+}
+
+.edge_pointer.white{
+    border: 7px solid #fff;
+}
+
+.edge_pointer.blue{
+    border: 7px solid #0D7FFF;
+}
+
+.edge_pointer.orange{
+    border: 7px solid #DE551A;
+}
+
+.map_wrapp{
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+
+}
+.edge_map{    position: absolute; bottom: 5%; right:5%;}
 
 .location.location.seoul{
     top: 25%;
@@ -2027,7 +2066,7 @@ footer{
     display: flex;
     align-items: flex-start;
     padding-top: 30px;
-    height: 100px;
+    height: 150px;
 }
 
 
@@ -2061,5 +2100,12 @@ footer{
 .marker.mo{display: none;}
 .marker {
 left:95%!important;
+}
+
+.biobank_content_descript {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 30px;
+    height: auto;
 }
 }
