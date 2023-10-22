@@ -86,54 +86,57 @@ function toggleAcodianItem(el, index) {
 document.addEventListener('DOMContentLoaded', function() {
     let buttons = document.querySelectorAll('.location');
     let closeButtons = document.querySelectorAll('.close-popup');
-  
+
     buttons.forEach(function(button) {
         button.addEventListener('click', function(e) {
             let popupId = e.target.getAttribute('data-location') + '-popup';
             let popup = document.getElementById(popupId);
             
-            // 모든 팝업을 숨기고, 모든 버튼의 active 클래스를 제거합니다.
             document.querySelectorAll('.popup').forEach(function(p) {
                 p.style.display = 'none';
             });
             document.querySelectorAll('.location').forEach(function(b) {
                 b.classList.remove('active');
             });
-            
+
             if(popup) {
                 if(window.innerWidth <= 768) { // 모바일 환경
                     popup.style.left = '50%';
                     popup.style.top = '80%';
                     popup.style.transform = 'translate(-50%, -50%)';
                 } else { // 웹 환경
-                    popup.style.left = e.target.offsetLeft + 'px';
+                    if(e.target.offsetLeft <= window.innerWidth / 2) { // 왼쪽 버튼
+                        popup.style.left = e.target.offsetLeft - popup.offsetWidth + 'px';
+                        let verticalLineHeight = popup.offsetTop - e.target.offsetTop;
+                        popup.style.setProperty('--vertical-line-height', `${verticalLineHeight}px`);
+                    } else { // 오른쪽 버튼
+                        popup.style.left = e.target.offsetLeft + e.target.offsetWidth + 'px';
+                        let verticalLineHeight = popup.offsetTop - e.target.offsetTop;
+                        let horizontalLineWidth = e.target.offsetLeft + e.target.offsetWidth - popup.offsetLeft;
+                        popup.style.setProperty('--vertical-line-height', `${verticalLineHeight}px`);
+                        popup.style.setProperty('--horizontal-line-width', `${horizontalLineWidth}px`);
+                    }
                     popup.style.top = e.target.offsetTop + e.target.offsetHeight + 'px';
-                    popup.style.transform = '';
                 }
-                
-                // 팝업을 표시하고, 버튼에 active 클래스를 추가합니다.
+
                 popup.style.display = 'block';
                 e.target.classList.add('active');
             }
         });
     });
-  
+
     closeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             let parentPopup = this.closest('.popup');
             if(parentPopup) {
-                parentPopup.style.display = 'none'; // 팝업을 숨깁니다.
-                
-                // 모든 버튼의 active 클래스를 제거합니다.
+                parentPopup.style.display = 'none';
                 document.querySelectorAll('.location').forEach(function(b) {
                     b.classList.remove('active');
                 });
             }
         });
     });
-  });
-  
-  
+});
 
 
 

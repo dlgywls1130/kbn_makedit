@@ -859,27 +859,6 @@ top: 55%;
     left: 59%;
 }
 
-.popup::before, .popup::after {
-    content: '';
-    position: absolute;
-    background-color: #fff;  /* 선의 색상입니다. */
-    z-index: -1;
-}
-
-.popup::before {
-    width: 2px;  /* 선의 굵기 */
-    height: var(--vertical-line-height);
-    left: 0;
-    top: 0;
-}
-
-.popup::after {
-    height: 2px;  /* 선의 굵기 */
-    width: var(--horizontal-line-width); 
-    left: 0;
-    top: 0;
-}
-
 
 /* sample */
 

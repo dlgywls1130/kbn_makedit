@@ -726,7 +726,13 @@ top: 55%;
     height: 25px;
 }
 
-
+.connecting-line {
+    position: absolute;
+    height: 1px;
+    background-color: #fff; 
+    transform-origin: 0 0;
+    z-index: 1; 
+}
 
 
 .location.right-pointer.blue-pointer::after{
@@ -857,27 +863,6 @@ top: 55%;
 .location.inje{
     top: 64%;
     left: 59%;
-}
-
-.popup::before, .popup::after {
-    content: '';
-    position: absolute;
-    background-color: #fff;  /* 선의 색상입니다. */
-    z-index: -1;
-}
-
-.popup::before {
-    width: 2px;  /* 선의 굵기 */
-    height: var(--vertical-line-height);
-    left: 0;
-    top: 0;
-}
-
-.popup::after {
-    height: 2px;  /* 선의 굵기 */
-    width: var(--horizontal-line-width); 
-    left: 0;
-    top: 0;
 }
 
 

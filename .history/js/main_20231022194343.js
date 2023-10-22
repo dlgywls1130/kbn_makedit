@@ -86,7 +86,7 @@ function toggleAcodianItem(el, index) {
 document.addEventListener('DOMContentLoaded', function() {
     let buttons = document.querySelectorAll('.location');
     let closeButtons = document.querySelectorAll('.close-popup');
-  
+
     buttons.forEach(function(button) {
         button.addEventListener('click', function(e) {
             let popupId = e.target.getAttribute('data-location') + '-popup';
@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 모든 팝업을 숨기고, 모든 버튼의 active 클래스를 제거합니다.
             document.querySelectorAll('.popup').forEach(function(p) {
+                p.classList.remove('active'); // 팝업의 active 클래스를 제거합니다
                 p.style.display = 'none';
             });
             document.querySelectorAll('.location').forEach(function(b) {
@@ -111,18 +112,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     popup.style.transform = '';
                 }
                 
-                // 팝업을 표시하고, 버튼에 active 클래스를 추가합니다.
+                // 팝업을 표시하고, 버튼과 팝업에 active 클래스를 추가합니다.
                 popup.style.display = 'block';
                 e.target.classList.add('active');
+                popup.classList.add('active'); // 팝업에 active 클래스를 추가합니다
             }
         });
     });
-  
+
     closeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             let parentPopup = this.closest('.popup');
             if(parentPopup) {
                 parentPopup.style.display = 'none'; // 팝업을 숨깁니다.
+                parentPopup.classList.remove('active'); // 팝업의 active 클래스를 제거합니다
                 
                 // 모든 버튼의 active 클래스를 제거합니다.
                 document.querySelectorAll('.location').forEach(function(b) {
@@ -131,9 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-  });
-  
-  
+});
 
 
 

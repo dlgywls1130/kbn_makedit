@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     popup.style.top = '80%';
                     popup.style.transform = 'translate(-50%, -50%)';
                 } else { // 웹 환경
-                    popup.style.left = e.target.offsetLeft + 'px';
-                    popup.style.top = e.target.offsetTop + e.target.offsetHeight + 'px';
+                    popup.style.left = (e.target.offsetLeft + e.target.offsetWidth/2 - popup.offsetWidth/2) + 'px'; 
+                    popup.style.top = (e.target.offsetTop + e.target.offsetHeight + 10) + 'px'; // 10px은 팝업과 버튼 사이의 간격입니다.
                     popup.style.transform = '';
                 }
                 
@@ -133,8 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  
-
 
 
 

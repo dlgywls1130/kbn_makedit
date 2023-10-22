@@ -86,12 +86,41 @@ function toggleAcodianItem(el, index) {
 document.addEventListener('DOMContentLoaded', function() {
     let buttons = document.querySelectorAll('.location');
     let closeButtons = document.querySelectorAll('.close-popup');
-  
+
+    function drawLine(button, popup) {
+        // 이전 선 제거
+        const existingLine = document.querySelector('.connecting-line');
+        if (existingLine) existingLine.remove();
+    
+        const line = document.createElement("div");
+        line.className = 'connecting-line';
+        const buttonRect = button.getBoundingClientRect();
+        const popupRect = popup.getBoundingClientRect();
+    
+        const startX = buttonRect.left + (buttonRect.width / 2) + window.scrollX;
+        const startY = buttonRect.bottom + window.scrollY;
+        const endX = popupRect.left + (popupRect.width / 2) + window.scrollX;
+        const endY = popupRect.top + window.scrollY;
+    
+        const length = Math.sqrt((startX - endX) ** 2 + (startY - endY) ** 2);
+        const angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI;
+        const transform = `rotate(${angle}deg)`;
+    
+        line.style.width = `${length}px`;
+        line.style.left = `${startX}px`;
+        line.style.top = `${startY}px`;
+        line.style.transform = transform;
+    
+        // 수정된 부분
+        let mapContainer = document.querySelector('.map-container'); // map-container 선택
+        mapContainer.appendChild(line); // line 요소를 map-container 내부에 추가
+    }
+
     buttons.forEach(function(button) {
         button.addEventListener('click', function(e) {
             let popupId = e.target.getAttribute('data-location') + '-popup';
             let popup = document.getElementById(popupId);
-            
+
             // 모든 팝업을 숨기고, 모든 버튼의 active 클래스를 제거합니다.
             document.querySelectorAll('.popup').forEach(function(p) {
                 p.style.display = 'none';
@@ -99,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.location').forEach(function(b) {
                 b.classList.remove('active');
             });
-            
+
             if(popup) {
                 if(window.innerWidth <= 768) { // 모바일 환경
                     popup.style.left = '50%';
@@ -109,32 +138,36 @@ document.addEventListener('DOMContentLoaded', function() {
                     popup.style.left = e.target.offsetLeft + 'px';
                     popup.style.top = e.target.offsetTop + e.target.offsetHeight + 'px';
                     popup.style.transform = '';
+
+                    // 선을 그리기 위한 코드 추가
+                    drawLine(e.target, popup);
                 }
-                
+
                 // 팝업을 표시하고, 버튼에 active 클래스를 추가합니다.
                 popup.style.display = 'block';
                 e.target.classList.add('active');
             }
         });
     });
-  
+
     closeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             let parentPopup = this.closest('.popup');
             if(parentPopup) {
                 parentPopup.style.display = 'none'; // 팝업을 숨깁니다.
-                
+
                 // 모든 버튼의 active 클래스를 제거합니다.
                 document.querySelectorAll('.location').forEach(function(b) {
                     b.classList.remove('active');
                 });
+
+                // 팝업이 닫혔을 때 선 제거
+                const existingLine = document.querySelector('.connecting-line');
+                if (existingLine) existingLine.remove();
             }
         });
     });
-  });
-  
-  
-
+});
 
 
 

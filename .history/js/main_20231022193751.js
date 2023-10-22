@@ -86,7 +86,7 @@ function toggleAcodianItem(el, index) {
 document.addEventListener('DOMContentLoaded', function() {
     let buttons = document.querySelectorAll('.location');
     let closeButtons = document.querySelectorAll('.close-popup');
-  
+
     buttons.forEach(function(button) {
         button.addEventListener('click', function(e) {
             let popupId = e.target.getAttribute('data-location') + '-popup';
@@ -99,31 +99,36 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.location').forEach(function(b) {
                 b.classList.remove('active');
             });
-            
+
             if(popup) {
                 if(window.innerWidth <= 768) { // 모바일 환경
                     popup.style.left = '50%';
                     popup.style.top = '80%';
                     popup.style.transform = 'translate(-50%, -50%)';
                 } else { // 웹 환경
+                    let buttonBottom = e.target.offsetTop + e.target.offsetHeight;
+                    let lineLength = popup.offsetTop - buttonBottom;
                     popup.style.left = e.target.offsetLeft + 'px';
-                    popup.style.top = e.target.offsetTop + e.target.offsetHeight + 'px';
+                    popup.style.top = buttonBottom + 'px';
                     popup.style.transform = '';
+
+                    // before 가상 선택자의 선 길이를 조정합니다.
+                    popup.style.setProperty('--line-length', lineLength + 'px');
                 }
-                
+
                 // 팝업을 표시하고, 버튼에 active 클래스를 추가합니다.
                 popup.style.display = 'block';
                 e.target.classList.add('active');
             }
         });
     });
-  
+
     closeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             let parentPopup = this.closest('.popup');
             if(parentPopup) {
                 parentPopup.style.display = 'none'; // 팝업을 숨깁니다.
-                
+
                 // 모든 버튼의 active 클래스를 제거합니다.
                 document.querySelectorAll('.location').forEach(function(b) {
                     b.classList.remove('active');
@@ -131,9 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-  });
-  
-  
+});
 
 
 

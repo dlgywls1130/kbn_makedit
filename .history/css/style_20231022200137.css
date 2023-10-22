@@ -859,25 +859,16 @@ top: 55%;
     left: 59%;
 }
 
-.popup::before, .popup::after {
+.popup::before {
     content: '';
     position: absolute;
-    background-color: #fff;  /* 선의 색상입니다. */
-    z-index: -1;
-}
-
-.popup::before {
-    width: 2px;  /* 선의 굵기 */
-    height: var(--vertical-line-height);
+    border-left: 2px solid #fff; /* 이것은 선의 색상과 굵기입니다. 원하는대로 수정하세요. */
+    width: 0;
+    height: 0;
     left: 0;
     top: 0;
-}
-
-.popup::after {
-    height: 2px;  /* 선의 굵기 */
-    width: var(--horizontal-line-width); 
-    left: 0;
-    top: 0;
+    z-index: -1; /* 이것은 팝업 아래에 선이 위치하도록 합니다. */
+    transition: all 0.3s; /* 선의 애니메이션 효과 */
 }
 
 

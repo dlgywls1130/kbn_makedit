@@ -859,25 +859,33 @@ top: 55%;
     left: 59%;
 }
 
+
 .popup::before, .popup::after {
     content: '';
     position: absolute;
-    background-color: #fff;  /* 선의 색상입니다. */
-    z-index: -1;
+    background-color: #fff;
+    display: none;
 }
 
-.popup::before {
-    width: 2px;  /* 선의 굵기 */
-    height: var(--vertical-line-height);
-    left: 0;
-    top: 0;
+.popup::before { 
+    width: 2px;
+    left: 50%;
+    top: -10px;
+    bottom: 100%; 
+    height: calc(100% + 10px); 
 }
 
 .popup::after {
-    height: 2px;  /* 선의 굵기 */
-    width: var(--horizontal-line-width); 
-    left: 0;
-    top: 0;
+    height: 2px;
+    top: -10px;
+    left: 50%;
+    right: 100%;
+    width: calc(100% - 50%);
+}
+
+.popup.active::before,
+.popup.active::after {
+    display: block;
 }
 
 

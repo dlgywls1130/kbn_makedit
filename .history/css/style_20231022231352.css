@@ -868,14 +868,14 @@ top: 55%;
 
 .popup::before {
     width: 2px;  /* 선의 굵기 */
-    height: var(--vertical-line-height);
+    height: calc(var(--vertical-line-height, 0px)); /* 초기값을 0으로 설정 */
     left: 0;
     top: 0;
 }
 
 .popup::after {
     height: 2px;  /* 선의 굵기 */
-    width: var(--horizontal-line-width); 
+    width: calc(var(--horizontal-line-width, 0px)); /* 초기값을 0으로 설정 */
     left: 0;
     top: 0;
 }

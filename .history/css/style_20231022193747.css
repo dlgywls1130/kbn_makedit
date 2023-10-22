@@ -859,27 +859,22 @@ top: 55%;
     left: 59%;
 }
 
-.popup::before, .popup::after {
-    content: '';
+
+.popup::before {
+    content: "";
     position: absolute;
-    background-color: #fff;  /* 선의 색상입니다. */
+    width: 1px; /* 선의 너비 */
+    height: var(--line-length, 10px); /* 선의 높이 */
+    background-color: #fff; /* 선의 색상 */
+    top: -50px; /* 팝업 상단 위치로 조정 */
+    left: 50%; /* 선을 팝업의 중앙에 위치시킴 */
+    display: none; /* 기본적으로 숨김 */
     z-index: -1;
 }
 
-.popup::before {
-    width: 2px;  /* 선의 굵기 */
-    height: var(--vertical-line-height);
-    left: 0;
-    top: 0;
+.popup.active::before {
+    display: block; /* 활성화 상태에서 선 표시 */
 }
-
-.popup::after {
-    height: 2px;  /* 선의 굵기 */
-    width: var(--horizontal-line-width); 
-    left: 0;
-    top: 0;
-}
-
 
 /* sample */
 
