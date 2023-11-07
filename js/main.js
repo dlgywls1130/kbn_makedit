@@ -25,7 +25,7 @@ $('.slide_wrap').on('init', function(event, slick) {
   prevArrow: '<div class="arrow slick-prev"></div>',
   nextArrow: '<div class="arrow slick-next"></div>',
   customPaging: function(slider, i) {
-      var titles = ['Biobank', 'Support Center', 'On-line Searching'];
+      var titles = ['01', '02', '03'];
       var mobileTitles = ['01', '02', '03'];
 
       // 화면의 너비에 따라 해당 텍스트 배열 선택
