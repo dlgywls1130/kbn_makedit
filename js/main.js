@@ -210,6 +210,161 @@ $(document).ready(function() {
 
 
 
+
+// 6. rolling banner
+$('.rolling_slide').slick({
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: false,
+    autoplay: true,
+    autoplaySpeed: 0,
+    cssEase: 'linear',
+    speed: 4000,
+    infinite: true,
+    pauseOnHover: false,
+    swipe: false,
+    responsive: [
+      {
+        breakpoint: 768, // 768px 이하의 화면 크기에서 적용될 설정
+        settings: {
+          slidesToShow: 2, // 모바일에서 보여질 슬라이드 수
+          slidesToScroll: 1,
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 0,
+          cssEase: 'linear',
+          speed: 4000,
+          pauseOnHover: false,
+          swipe: false,
+        }
+      }
+    ]
+  });
+  
+  
+  //7.nav scroll
+  $(document).ready(function() {
+    $('.nav_list a').click(function(e) {
+        e.preventDefault(); // 기본 이벤트 동작을 막음
+  
+        var target = $(this).attr('href'); // 클릭한 링크의 href 값을 가져옴
+        var targetPosition = $(target).offset().top; // 해당 섹션의 위치 값을 가져옴
+  
+        $('html, body').animate({
+            scrollTop: targetPosition
+        }, 1000); // 1초 동안 해당 위치로 스크롤
+    });
+  });
+  
+  
+  //8. scroll fade
+  
+  const spyEls = document.querySelectorAll('.scroll-spy')
+  // 요소들 반복 처리!
+  spyEls.forEach(function (spyEl) {
+    new ScrollMagic
+      .Scene({ // 감시할 장면(Scene)을 추가
+        triggerElement: spyEl, // 보여짐 여부를 감시할 요소를 지정
+        triggerHook: .8 // 화면의 80% 지점에서 보여짐 여부 감시
+      })
+      .setClassToggle(spyEl, 'show') // 요소가 화면에 보이면 show 클래스 추가
+      .addTo(new ScrollMagic.Controller()) // 컨트롤러에 장면을 할당(필수!)
+  })
+  
+  
+  //9.sample count animation
+  
+  let hasAnimated = false; // 애니메이션이 한 번만 실행되게 하기 위한 플래그
+  
+  const counters = document.querySelectorAll('.right_span p');
+  const sampleSection = document.querySelector('#sample');
+  
+  const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !hasAnimated) {
+          animateCounters();
+          hasAnimated = true;
+      }
+  }, {
+      threshold: 0.1  // 적어도 10%의 타겟 요소가 뷰포트에 들어왔을 때 알림
+  });
+  
+  observer.observe(sampleSection);
+  
+  function animateCounters() {
+      const animationDuration = 2000; // 2 seconds
+      const updateFrequency = 50; // milliseconds
+  
+      counters.forEach(counter => {
+          function updateCounter() {
+              const target = +counter.getAttribute('data-target');
+              const count = +counter.innerText.replace(/,/g, '');  // 콤마 제거
+              const increment = (target / (animationDuration / updateFrequency));
+  
+              if (count < target) {
+                  counter.innerText = addCommas(Math.min(count + increment, target).toFixed(0));
+                  setTimeout(updateCounter, updateFrequency);
+              } else {
+                  counter.innerText = addCommas(target.toFixed(0));
+              }
+          }
+  
+          function addCommas(nStr) {
+              nStr += '';
+              const x = nStr.split('.');
+              let x1 = x[0];
+              const x2 = x.length > 1 ? '.' + x[1] : '';
+              const rgx = /(\d+)(\d{3})/;
+              while (rgx.test(x1)) {
+                  x1 = x1.replace(rgx, '$1' + ',' + '$2');
+              }
+              return x1 + x2;
+          }
+  
+          const target = +counter.getAttribute('data-target');
+          counter.innerText = '0';
+          updateCounter();
+      });
+  }
+  
+  
+  // 10. menu responsive
+  
+  const openSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+  </svg>`;
+  
+  const closeSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+  </svg>`;
+  
+  const navbarMenu = document.querySelector('.nav_list');
+  const navbarToggle = document.querySelector('.mobile_menu');
+  const headerElement = document.querySelector('header');
+  
+  navbarToggle.addEventListener('click', () => {
+      navbarMenu.classList.toggle('open');
+    
+      // 아이콘 변경 및 배경색 변경
+      if (navbarMenu.classList.contains('open')) {
+          navbarToggle.innerHTML = closeSVG;
+          headerElement.style.backgroundColor = '#E8E9F1';
+      } else {
+          navbarToggle.innerHTML = openSVG;
+          headerElement.style.backgroundColor = '';  // 초기 배경색으로 변경
+      }
+  });
+  
+  // Navbar 메뉴 클릭시 메뉴를 자동으로 닫아줌
+  navbarMenu.addEventListener('click', () => {
+      navbarMenu.classList.remove('open');
+      navbarToggle.innerHTML = openSVG; // 아이콘을 초기 상태로 변경
+      headerElement.style.backgroundColor = ''; // 초기 배경색으로 변경
+  });
+
+  
+  
+
 // 5.biobank_Tab
 $(document).ready(function() {
 
@@ -316,156 +471,3 @@ $(document).ready(function() {
 });
 
 
-
-
-
-// 6. rolling banner
-$('.rolling_slide').slick({
-  slidesToShow: 7,
-  slidesToScroll: 1,
-  arrows: false,
-  dots: false,
-  autoplay: true,
-  autoplaySpeed: 0,
-  cssEase: 'linear',
-  speed: 4000,
-  infinite: true,
-  pauseOnHover: false,
-  swipe: false,
-  responsive: [
-    {
-      breakpoint: 768, // 768px 이하의 화면 크기에서 적용될 설정
-      settings: {
-        slidesToShow: 2, // 모바일에서 보여질 슬라이드 수
-        slidesToScroll: 1,
-        infinite: true,
-        autoplay: true,
-        autoplaySpeed: 0,
-        cssEase: 'linear',
-        speed: 4000,
-        pauseOnHover: false,
-        swipe: false,
-      }
-    }
-  ]
-});
-
-
-//7.nav scroll
-$(document).ready(function() {
-  $('.nav_list a').click(function(e) {
-      e.preventDefault(); // 기본 이벤트 동작을 막음
-
-      var target = $(this).attr('href'); // 클릭한 링크의 href 값을 가져옴
-      var targetPosition = $(target).offset().top; // 해당 섹션의 위치 값을 가져옴
-
-      $('html, body').animate({
-          scrollTop: targetPosition
-      }, 1000); // 1초 동안 해당 위치로 스크롤
-  });
-});
-
-
-//8. scroll fade
-
-const spyEls = document.querySelectorAll('.scroll-spy')
-// 요소들 반복 처리!
-spyEls.forEach(function (spyEl) {
-  new ScrollMagic
-    .Scene({ // 감시할 장면(Scene)을 추가
-      triggerElement: spyEl, // 보여짐 여부를 감시할 요소를 지정
-      triggerHook: .8 // 화면의 80% 지점에서 보여짐 여부 감시
-    })
-    .setClassToggle(spyEl, 'show') // 요소가 화면에 보이면 show 클래스 추가
-    .addTo(new ScrollMagic.Controller()) // 컨트롤러에 장면을 할당(필수!)
-})
-
-
-//9.sample count animation
-
-let hasAnimated = false; // 애니메이션이 한 번만 실행되게 하기 위한 플래그
-
-const counters = document.querySelectorAll('.right_span p');
-const sampleSection = document.querySelector('#sample');
-
-const observer = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting && !hasAnimated) {
-        animateCounters();
-        hasAnimated = true;
-    }
-}, {
-    threshold: 0.1  // 적어도 10%의 타겟 요소가 뷰포트에 들어왔을 때 알림
-});
-
-observer.observe(sampleSection);
-
-function animateCounters() {
-    const animationDuration = 2000; // 2 seconds
-    const updateFrequency = 50; // milliseconds
-
-    counters.forEach(counter => {
-        function updateCounter() {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText.replace(/,/g, '');  // 콤마 제거
-            const increment = (target / (animationDuration / updateFrequency));
-
-            if (count < target) {
-                counter.innerText = addCommas(Math.min(count + increment, target).toFixed(0));
-                setTimeout(updateCounter, updateFrequency);
-            } else {
-                counter.innerText = addCommas(target.toFixed(0));
-            }
-        }
-
-        function addCommas(nStr) {
-            nStr += '';
-            const x = nStr.split('.');
-            let x1 = x[0];
-            const x2 = x.length > 1 ? '.' + x[1] : '';
-            const rgx = /(\d+)(\d{3})/;
-            while (rgx.test(x1)) {
-                x1 = x1.replace(rgx, '$1' + ',' + '$2');
-            }
-            return x1 + x2;
-        }
-
-        const target = +counter.getAttribute('data-target');
-        counter.innerText = '0';
-        updateCounter();
-    });
-}
-
-
-// 10. menu responsive
-
-const openSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-</svg>`;
-
-const closeSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg>`;
-
-const navbarMenu = document.querySelector('.nav_list');
-const navbarToggle = document.querySelector('.mobile_menu');
-const headerElement = document.querySelector('header');
-
-navbarToggle.addEventListener('click', () => {
-    navbarMenu.classList.toggle('open');
-  
-    // 아이콘 변경 및 배경색 변경
-    if (navbarMenu.classList.contains('open')) {
-        navbarToggle.innerHTML = closeSVG;
-        headerElement.style.backgroundColor = '#E8E9F1';
-    } else {
-        navbarToggle.innerHTML = openSVG;
-        headerElement.style.backgroundColor = '';  // 초기 배경색으로 변경
-    }
-});
-
-// Navbar 메뉴 클릭시 메뉴를 자동으로 닫아줌
-navbarMenu.addEventListener('click', () => {
-    navbarMenu.classList.remove('open');
-    navbarToggle.innerHTML = openSVG; // 아이콘을 초기 상태로 변경
-    headerElement.style.backgroundColor = ''; // 초기 배경색으로 변경
-});
