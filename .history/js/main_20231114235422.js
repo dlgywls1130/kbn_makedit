@@ -184,7 +184,15 @@ let slideConfig = {
   infinite: true,
   prevArrow: '<div class="arrow slick-prev"></div>',
   nextArrow: '<div class="arrow slick-next"></div>',
-
+  responsive: [
+        {
+        breakpoint: 1200, // 768px 이하에서 적용
+        settings: {
+            dots: false, // 도트 숨김
+            arrows: true // 화살표 보임
+        }
+        }
+    ]
 };
 
 $('.text-list').slick(slideConfig).on('init', function(event, slick) {

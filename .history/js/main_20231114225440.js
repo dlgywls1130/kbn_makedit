@@ -184,7 +184,6 @@ let slideConfig = {
   infinite: true,
   prevArrow: '<div class="arrow slick-prev"></div>',
   nextArrow: '<div class="arrow slick-next"></div>',
-
 };
 
 $('.text-list').slick(slideConfig).on('init', function(event, slick) {

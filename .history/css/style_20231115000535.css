@@ -1491,7 +1491,6 @@ footer{
     align-items: center;
     position: absolute;
     right: 5%;
-    top: 44%;
 }
 
 
@@ -2292,7 +2291,7 @@ footer{
 
 .text-dual_list{
     font-size: 15px;
-    margin-top: 180px;
+    margin-top: 80px;
     line-height:20px;
     padding-left: 2.4%;
 }

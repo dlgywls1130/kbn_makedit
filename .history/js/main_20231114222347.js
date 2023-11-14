@@ -178,13 +178,10 @@ function startProgressBar() {
 let slideConfig = {
   slidesToShow: mobileDevice ? 1 : 3,
   slidesToScroll: 1,
-  arrows: false,
-  dots: false,
+  arrows: true,
+  dots: true, // Enable dots
   autoplay: false,
-  infinite: true,
-  prevArrow: '<div class="arrow slick-prev"></div>',
-  nextArrow: '<div class="arrow slick-next"></div>',
-
+  infinite: true
 };
 
 $('.text-list').slick(slideConfig).on('init', function(event, slick) {

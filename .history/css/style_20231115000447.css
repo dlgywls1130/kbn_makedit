@@ -1491,7 +1491,6 @@ footer{
     align-items: center;
     position: absolute;
     right: 5%;
-    top: 44%;
 }
 
 
@@ -1822,7 +1821,6 @@ footer{
         height: 100%;
     }
 
-    .slide_arrow_wrapper .slick-dots{display: none!important;}
     .acodian_list{
         margin-top: 20px;
     }
@@ -2292,7 +2290,7 @@ footer{
 
 .text-dual_list{
     font-size: 15px;
-    margin-top: 180px;
+    margin-top: 80px;
     line-height:20px;
     padding-left: 2.4%;
 }

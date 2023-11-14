@@ -178,13 +178,21 @@ function startProgressBar() {
 let slideConfig = {
   slidesToShow: mobileDevice ? 1 : 3,
   slidesToScroll: 1,
-  arrows: false,
-  dots: false,
+  arrows: true,
+  dots: true,
   autoplay: false,
   infinite: true,
   prevArrow: '<div class="arrow slick-prev"></div>',
   nextArrow: '<div class="arrow slick-next"></div>',
-
+  responsive: [
+        {
+        breakpoint: 800, // 768px 이하에서 적용
+        settings: {
+            dots: false, // 도트 숨김
+            arrows: true // 화살표 보임
+        }
+        }
+    ]
 };
 
 $('.text-list').slick(slideConfig).on('init', function(event, slick) {

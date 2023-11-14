@@ -178,13 +178,12 @@ function startProgressBar() {
 let slideConfig = {
   slidesToShow: mobileDevice ? 1 : 3,
   slidesToScroll: 1,
-  arrows: false,
-  dots: false,
+  arrows: false, // Initially set to false
+  dots: !mobileDevice, // Conditionally enable dots based on the device
   autoplay: false,
   infinite: true,
   prevArrow: '<div class="arrow slick-prev"></div>',
   nextArrow: '<div class="arrow slick-next"></div>',
-
 };
 
 $('.text-list').slick(slideConfig).on('init', function(event, slick) {
@@ -206,8 +205,6 @@ $('.slick-dots li button').on('click', function() {
 $(document).ready(function() {
   $('.text-list').slick('slickGoTo', 0);
 });
-
-
 
 
 // 5.biobank_Tab

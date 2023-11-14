@@ -78,7 +78,7 @@ section{margin-bottom:150px;}
 .content_list .list_main{
     position: relative;
     width: 30%;
-    font-size: 40px;
+    font-size: 4vw;
     font-weight: 700;
     color: var(--main-text);
     white-space: nowrap;
@@ -101,9 +101,9 @@ section{margin-bottom:150px;}
 }
 
 .content_list .list_descript p{
-    font-size: 25px;
+    font-size: 2.5vw;
     font-weight: 300;
-    line-height: 1.4;
+    line-height: 40px;
 }
 
 
@@ -177,11 +177,7 @@ section{margin-bottom:150px;}
 .mmb-25{margin-bottom: 25px;}
 .mmb-20{margin-bottom: 20px;}
 .mmb-15{margin-bottom: 15px;}
-
-
 }
-
-
 
 /* header */
 
@@ -1149,7 +1145,6 @@ background: #fff;
     font-weight: 300px;
     line-height: 40px;
     color: #fff;
-    line-height: 1.2;
     cursor: pointer;
 }
 
@@ -1242,7 +1237,7 @@ ul.tabs li:hover{
 }
 
 .biobank_content_height{
-    height: 300px;
+    height: 240px;
 }
 
 .biobank_content_descript span{
@@ -1481,58 +1476,7 @@ footer{
     color: rgba(255,255,255,0.62);
 }
 
-.text-list .slick-next {
-}
 
-.slide_arrow_wrapper{
-    position: relative;
-    z-index: 9;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    right: 5%;
-    top: 44%;
-}
-
-
-.slide_arrow_wrapper .slick-dots{
-    position: relative;
-    top: unset;
-    left: unset;
-}
-
-.slide_arrow_wrapper .slick-dots button{
-    font-size: 20px;
-    font-weight: 700;
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.slide_arrow_wrapper .slick-dots button.active{
-    border-bottom: none;
-}
-
-
-
-.slide_arrow_wrapper .arrow {
-    width: 12px;
-    height: 12px;
-    border-top: 3px solid #fff;
-    border-right: 3px solid #fff;
-    position: absolute;
-}
-
-.slide_arrow_wrapper .slick-next{
-    left: unset;
-    right: unset;
-    position: relative;
-}
-
-.slide_arrow_wrapper .slick-prev{
-    left: unset;
-    position: relative;
-    right: unset;
-}
 
 /* tablet */
 @media  screen and (max-width:1400px) {
@@ -1635,56 +1579,9 @@ footer{
         padding: 20px  30px;
     }
 
-    .tab-biobank {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        column-gap: 39px;
-        row-gap: 81px;
-        justify-content: flex-start;
-    }
-
-    .line_middle{
-        top: 60%!important;
-    }
-    
-    .slick-track{
-        top: 81px!important;
-    }
-
     
 
-
-.text_slide .slick-dots button{
-    font-size: 20px;
-    font-weight: 700;
-    border-bottom: none;
 }
-
-.text_slide .slick-dots button.active{
-    border-bottom: none;
-}
-
-
-
-.text-list .arrow {
-    width: 15px;
-    height: 15px;
-    border-top: 3px solid #fff;
-    border-right: 3px solid #fff;
-}
-
-
-}
-
-@media (min-width:769px) and (max-width:1200px){
-    .line_middle {
-        top: 70%!important;
-    }
-
-}
-
-
 @media (min-width:769px) and (max-width:1700px){
     .header_wrapper .nav_list li{
         padding: 0 30px;
@@ -1696,41 +1593,6 @@ footer{
     .about_acodian{
 
     }
-
-    .biobank_content .tab-link{
-        font-size: 23px;
-    }
-
-    .section_title span{
-        display: block;
-    }
-
-    .sample_list .sample_list_left{
-        padding: 0 20px;
-    }
-
-    .sample_list_icon {
-        width: 30px;
-        height: 30px;
-    }
-
-    .sample_list .sample_list_left .sample_list_title {
-        font-size: 35px;
-        font-weight: 700;
-        color: #fff;
-        margin-left: 25px;
-    }
-
-    .sample_list_right{
-        padding: 0 60px;
-    }
-
-    .sample_list_right .right_span span {
-        font-size: 19px;
-    }
-
-    .sample_list_right .right_span p {
-        font-size: 30px;}
 }
 
 
@@ -1754,7 +1616,6 @@ footer{
 
     .section_title{
         font-size: 50px;
-        padding: 0;
     }
     .content_width{
         background: none;
@@ -1764,7 +1625,6 @@ footer{
 
     .content_list{
         flex-direction:column;
-        padding: 0;
     }
 
     .content_list .list_main{
@@ -1811,18 +1671,13 @@ footer{
     }
     .about_acodian{
         flex-direction: column-reverse;
-        padding: 0;
     }
 
-    .sample_content{
-        padding: 0;
-    }
     .acodian_circle{
         width: 100%;
         height: 100%;
     }
 
-    .slide_arrow_wrapper .slick-dots{display: none!important;}
     .acodian_list{
         margin-top: 20px;
     }
@@ -2288,11 +2143,13 @@ footer{
     line-height: 30px;
 }
 
-
+.text_slide{
+    margin-top: 120px;
+}
 
 .text-dual_list{
     font-size: 15px;
-    margin-top: 180px;
+    margin-top: 80px;
     line-height:20px;
     padding-left: 2.4%;
 }
@@ -2300,20 +2157,14 @@ footer{
 .text-dual_list br{display: none;}
 
 .line_middle{
-    top: 79%!important;
+    top: 71%;
 }
-
-.text-list .slick-slide{height: 600px;}
 
 .text_list_title span{width: 25px; height: 25px; font-size: 15px;}
 
 .marker.mo{display: none;}
 .marker {
 left:95%!important;
-}
-
-.slide_arrow_wrapper{
-    margin-top: 2rem;
 }
 
 .biobank_content_descript {

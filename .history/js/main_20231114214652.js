@@ -139,15 +139,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // 4. Distribution slide
+
 let startPercentage = 0;
 let progressPercentage;
 let progressInterval;
 
 function isMobile() {
-  return window.innerWidth <= 768;
+    return window.innerWidth <= 768;
 }
 
+// 페이지 로딩 시 디바이스 타입 확인
 const mobileDevice = isMobile();
+
+// 모바일 환경이면 progressPercentage를 100으로, 아니면 30으로 설정
 progressPercentage = mobileDevice ? 100 : 30;
 
 function startProgressBar() {
@@ -158,53 +162,45 @@ function startProgressBar() {
   $('.progress-bar').css('width', startWidth + 'px');
 
   let maxProgressWidth = (totalWidth * progressPercentage) / 100;
-
-  const intervalDuration = 10;
+  
+  // 총 2000ms 동안 진행하므로, 10ms마다 인터벌을 실행하게 설정
+  const intervalDuration = 10; 
   const totalIntervals = 5000 / intervalDuration;
-  let increment = (maxProgressWidth - startWidth) / totalIntervals;
+  let increment = (maxProgressWidth - startWidth) / totalIntervals; 
 
   progressInterval = setInterval(function() {
-    let currentWidth = parseInt($('.progress-bar').css('width'));
-
-    if (currentWidth < maxProgressWidth) {
-      $('.progress-bar').css('width', currentWidth + increment + 'px');
-    } else {
-      clearInterval(progressInterval);
-      $('.text-list').slick('slickNext');
-    }
+      let currentWidth = parseInt($('.progress-bar').css('width'));
+  
+      if (currentWidth < maxProgressWidth) {
+          $('.progress-bar').css('width', currentWidth + increment + 'px');
+      } else {
+          clearInterval(progressInterval);
+          $('.text-list').slick('slickNext');
+      }
   }, intervalDuration);
 }
 
 let slideConfig = {
-  slidesToShow: mobileDevice ? 1 : 3,
-  slidesToScroll: 1,
-  arrows: false,
-  dots: false,
-  autoplay: false,
-  infinite: true,
-  prevArrow: '<div class="arrow slick-prev"></div>',
-  nextArrow: '<div class="arrow slick-next"></div>',
-
+    slidesToShow: mobileDevice ? 1 : 3,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: false,
+    autoplay: false,
+    infinite: true
 };
 
 $('.text-list').slick(slideConfig).on('init', function(event, slick) {
-  $('.text-list .slick-slide:first-child').addClass('active-slide');
-  startProgressBar();
+    $('.text-list .slick-slide:first-child').addClass('active-slide');
+    startProgressBar();
 }).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-  $('.text-list .slick-slide').removeClass('active-slide');
-  $(`.text-list .slick-slide[data-slick-index="${nextSlide}"]`).addClass('active-slide');
+    $('.text-list .slick-slide').removeClass('active-slide');
+    $(`.text-list .slick-slide[data-slick-index="${nextSlide}"]`).addClass('active-slide');
 }).on('afterChange', function(event, slick, currentSlide) {
-  startProgressBar();
-});
-
-// Add event listener for dot click
-$('.slick-dots li button').on('click', function() {
-  let dotIndex = $(this).parent().index();
-  $('.text-list').slick('slickGoTo', dotIndex);
+    startProgressBar();
 });
 
 $(document).ready(function() {
-  $('.text-list').slick('slickGoTo', 0);
+    $('.text-list').slick('slickGoTo', 0);
 });
 
 
@@ -214,7 +210,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 
   function initializeSlick() {
-      if ($(window).width() <= 1000) {
+      if ($(window).width() <= 1200) {
           if (!$('.tab-content .tab-biobank').hasClass('slick-initialized')) {
               $('.tab-content .tab-biobank').slick({
                   dots: false,
