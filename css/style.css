@@ -1921,7 +1921,7 @@ footer{
     }
 
     .about_wrap{
-        padding: 0 10px;
+        padding: 50px 10px;
         box-sizing: border-box;
     }
 
@@ -1959,7 +1959,8 @@ footer{
         height: 100%;
     }
 
-    .slide_arrow_wrapper .slick-dots{display: none!important;}
+    .main_banner .slick-dots{
+        display: none!important;}
     .acodian_list{
         margin-top: 20px;
     }
@@ -2043,6 +2044,9 @@ footer{
         right: 3%;
     }
 
+    .main_banner .slick-arrow{
+        top: 75%;
+    }
     /* kbn */
     .kbn_guidance_wrap{
         width: 100%;
