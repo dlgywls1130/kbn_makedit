@@ -1499,6 +1499,9 @@ footer{
     position: relative;
     top: unset;
     left: unset;
+
+    display: flex;
+    align-items: center;
 }
 
 .slide_arrow_wrapper .slick-dots button{
@@ -1674,7 +1677,9 @@ footer{
     border-right: 3px solid #fff;
 }
 
-
+.slick-list{
+    overflow: visible!important;
+}
 }
 
 @media (min-width:769px) and (max-width:1200px){
@@ -1795,6 +1800,23 @@ footer{
     .map-container{
         height: 1000px;
     }
+
+    .biobank_top{
+        bottom: -12%;
+    }
+
+    .biobank_content_height {
+        height: 150px;
+    }
+
+    .logo_loop .slick-track{
+        top: 0!important;
+    }
+
+    .slide_arrow_wrapper{
+        top: 52%;
+    }
+
 }
 
 
@@ -2471,11 +2493,13 @@ left:95%!important;
     height: 50px;
 }
 
+
+
 .roling_list{
     height: 40px!important;
 }
 
 .roliing{
-    padding-top: 4rem;
+    padding-top: 10rem;
 }
 }
