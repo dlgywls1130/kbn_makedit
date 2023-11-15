@@ -1680,6 +1680,10 @@ footer{
 .slick-list{
     overflow: visible!important;
 }
+
+.logo_loop .slick-track{
+    top: 0!important;
+}
 }
 
 @media (min-width:769px) and (max-width:1200px){
@@ -1809,9 +1813,7 @@ footer{
         height: 150px;
     }
 
-    .logo_loop .slick-track{
-        top: 0!important;
-    }
+
 
     .slide_arrow_wrapper{
         top: 52%;
