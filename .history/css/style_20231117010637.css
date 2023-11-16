@@ -1521,10 +1521,6 @@ footer{
     padding-bottom: 0;
 }
 
-.slick-dots li.slick-active button{
-    color:#fff;
-}
-
 .slide_arrow_wrapper .slick-dots button.active{
     border-bottom: none;
 }

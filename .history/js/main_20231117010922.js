@@ -187,7 +187,6 @@ let slideConfig = {
 
 $('.text-list').slick(slideConfig).on('init', function(event, slick) {
     $('.text-list .slick-slide:first-child').addClass('active-slide');
-    updateDotsColor(0); // 페이지 로드 시에도 색상을 업데이트
     startProgressBar();
   }).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
     // 현재 활성화된 슬라이드에서 active-slide 클래스 제거
@@ -195,17 +194,9 @@ $('.text-list').slick(slideConfig).on('init', function(event, slick) {
   }).on('afterChange', function(event, slick, currentSlide) {
     // 변경된 슬라이드에 active-slide 클래스 추가
     $(`.text-list .slick-slide[data-slick-index="${currentSlide}"]`).addClass('active-slide');
-    updateDotsColor(currentSlide); // 슬라이드 변경 시에 색상 업데이트
     startProgressBar();
-  });
-  
-  function updateDotsColor(currentSlide) {
-    // 모든 dots 초기화
-    $('.slick-dots li').removeClass('slick-active');
-  
-    // 현재 슬라이드에 해당하는 dot에 active 클래스 추가
-    $(`.slick-dots li:nth-child(${currentSlide + 1})`).addClass('slick-active');
-  }
+  })
+
 // Add event listener for dot click
 $('.slick-dots li button').on('click', function() {
   let dotIndex = $(this).parent().index();

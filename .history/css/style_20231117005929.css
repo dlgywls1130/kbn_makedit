@@ -1497,9 +1497,6 @@ footer{
     top: -12%;
 }
 
-.slick-dots li.slick-active button{
-    color: #fff;
-}
 .distribution_wrap .slick-dots button:hover, .slick-dots .slick-active button{border-bottom: none;}
 .distribution_wrap .slick-dots button{
     border-bottom: none;
@@ -1519,10 +1516,6 @@ footer{
     font-weight: 700;
     border-bottom: none;
     padding-bottom: 0;
-}
-
-.slick-dots li.slick-active button{
-    color:#fff;
 }
 
 .slide_arrow_wrapper .slick-dots button.active{

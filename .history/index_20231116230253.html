@@ -612,7 +612,7 @@
                     </div>
                 </div>
 
-                <!-- <div class="slide_arrow_wrapper">
+                <div class="slide_arrow_wrapper">
                     <div class="arrow slick-prev"></div>
 
                     <ul class="slick-dots">
@@ -624,7 +624,7 @@
                     </ul>
 
                     <div class="arrow slick-next"></div>
-                </div> -->
+                </div>
                 <div class="text_slide back-to-position to-up delay-1">
                     <div class="text-list">
                         <div class="text_list_title">
@@ -1806,9 +1806,13 @@
                         RELATED SITE
                     </h3>
                     <div class="select-box">
-                        <select class="select" id="mySelect">
-                            <option value="KDCA" data-link="https://www.kdca.go.kr/index.es?sid=a3#a">KDCA</option>
-                            <option value="National Biobank of Korea" data-link="https://biobank.nih.go.kr/cmm/main/engMainPage.do">National Biobank of Korea (nih.go.kr)</option>
+                        <select class="select">
+                            <option value="KDCA">
+                                <a href="www.kdca.go.kr" target="_blank" class="site_link">KDCA</a>
+                            </option>
+                            <option value="National Biobank of Korea">
+                                <a href="https://biobank.nih.go.kr/cmm/main/engMainPage.do" target="_blank" class="site_link">National Biobank of Korea (nih.go.kr)</a>
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -1838,19 +1842,12 @@
     <script src="./js/main.js"></script>
 
     <script>
-       $(document).ready(function(){
-    // selectbox styling
-    $('select').niceSelect();
-
-    // handle select change event
-    $('#mySelect').change(function(){
-        var selectedOption = $(this).find(':selected');
-        var link = selectedOption.data('link');
-
-        // open the link in a new tab
-        window.open(link, '_blank');
-    });
-});
+        $(document).ready(function(){
+        
+            // selectbox styling
+            $('select').niceSelect();
+        
+        });
     </script>
 </body>
 </html>

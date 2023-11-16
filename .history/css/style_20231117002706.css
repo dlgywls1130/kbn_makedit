@@ -1493,18 +1493,11 @@ footer{
     display: flex;
     align-items: center;
     position: absolute;
-    right: 8%;
-    top: -12%;
+    right: 11%;
+    top: 44%;
 }
 
-.slick-dots li.slick-active button{
-    color: #fff;
-}
-.distribution_wrap .slick-dots button:hover, .slick-dots .slick-active button{border-bottom: none;}
-.distribution_wrap .slick-dots button{
-    border-bottom: none;
-    padding-bottom: 0px;
-}
+
 .slide_arrow_wrapper .slick-dots{
     position: relative;
     top: unset;
@@ -1514,15 +1507,11 @@ footer{
     align-items: center;
 }
 
-.slide_arrow_wrapper .slick-dots li{
+.slide_arrow_wrapper .slick-dots button{
     font-size: 20px;
     font-weight: 700;
     border-bottom: none;
     padding-bottom: 0;
-}
-
-.slick-dots li.slick-active button{
-    color:#fff;
 }
 
 .slide_arrow_wrapper .slick-dots button.active{

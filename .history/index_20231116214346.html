@@ -10,7 +10,6 @@
 
     <!-- slick css -->
     <link rel="stylesheet"  type="text/css" href="./css/slick.css">
-    <link rel="stylesheet"   href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.css">
 
 </head>
 <body>
@@ -612,7 +611,7 @@
                     </div>
                 </div>
 
-                <!-- <div class="slide_arrow_wrapper">
+                <div class="slide_arrow_wrapper">
                     <div class="arrow slick-prev"></div>
 
                     <ul class="slick-dots">
@@ -624,7 +623,7 @@
                     </ul>
 
                     <div class="arrow slick-next"></div>
-                </div> -->
+                </div>
                 <div class="text_slide back-to-position to-up delay-1">
                     <div class="text-list">
                         <div class="text_list_title">
@@ -1805,17 +1804,19 @@
                     <h3 class="footer_title">
                         RELATED SITE
                     </h3>
-                    <div class="select-box">
-                        <select class="select" id="mySelect">
-                            <option value="KDCA" data-link="https://www.kdca.go.kr/index.es?sid=a3#a">KDCA</option>
-                            <option value="National Biobank of Korea" data-link="https://biobank.nih.go.kr/cmm/main/engMainPage.do">National Biobank of Korea (nih.go.kr)</option>
-                        </select>
+                    <div class="link_site">
+                        <a href="https://biobank.nih.go.kr/cmm/main/engMainPage.do" target="_blank" class="site_link">
+                            <img src="./image/kcda2.png" alt="link">
+                        </a>
+                        <a href="https://biobank.nih.go.kr/cmm/main/engMainPage.do" target="_blank" class="site_link">
+                            <img src="./image/nih.png" alt="link">
+                        </a>
+
                     </div>
                 </div>
 
             </div>
         </div>
-
         <div class="footer_copy">
             <div class="footer_copy_wrap">
                 <p>YONSEI UNIVERSITY, YONGIN SEVERANCE HOSPITAL. ALL RIGHTS RESERVED </p>
@@ -1836,21 +1837,5 @@
     <script src="./js/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
     <script src="./js/main.js"></script>
-
-    <script>
-       $(document).ready(function(){
-    // selectbox styling
-    $('select').niceSelect();
-
-    // handle select change event
-    $('#mySelect').change(function(){
-        var selectedOption = $(this).find(':selected');
-        var link = selectedOption.data('link');
-
-        // open the link in a new tab
-        window.open(link, '_blank');
-    });
-});
-    </script>
 </body>
 </html>

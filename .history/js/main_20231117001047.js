@@ -178,34 +178,25 @@ function startProgressBar() {
 let slideConfig = {
   slidesToShow: mobileDevice ? 1 : 3,
   slidesToScroll: 1,
+  arrows: false,
   dots: false,
   autoplay: false,
   infinite: true,
-  prevArrow: '<div class="slide_arrow_wrapper"><div class="arrow slick-prev"></div><ul class="slick-dots"><li><button>01</button></li><li><button>02</button></li><li><button>03</button></li><li><button>04</button></li><li><button>05</button></li></ul><div class="arrow slick-next"></div></div>',
-  nextArrow: '',
+  prevArrow: '<div class="arrow slick-prev"></div>',
+  nextArrow: '<div class="arrow slick-next"></div>',
+
 };
 
 $('.text-list').slick(slideConfig).on('init', function(event, slick) {
-    $('.text-list .slick-slide:first-child').addClass('active-slide');
-    updateDotsColor(0); // 페이지 로드 시에도 색상을 업데이트
-    startProgressBar();
-  }).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-    // 현재 활성화된 슬라이드에서 active-slide 클래스 제거
-    $('.text-list .slick-slide').removeClass('active-slide');
-  }).on('afterChange', function(event, slick, currentSlide) {
-    // 변경된 슬라이드에 active-slide 클래스 추가
-    $(`.text-list .slick-slide[data-slick-index="${currentSlide}"]`).addClass('active-slide');
-    updateDotsColor(currentSlide); // 슬라이드 변경 시에 색상 업데이트
-    startProgressBar();
-  });
-  
-  function updateDotsColor(currentSlide) {
-    // 모든 dots 초기화
-    $('.slick-dots li').removeClass('slick-active');
-  
-    // 현재 슬라이드에 해당하는 dot에 active 클래스 추가
-    $(`.slick-dots li:nth-child(${currentSlide + 1})`).addClass('slick-active');
-  }
+  $('.text-list .slick-slide:first-child').addClass('active-slide');
+  startProgressBar();
+}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+  $('.text-list .slick-slide').removeClass('active-slide');
+  $(`.text-list .slick-slide[data-slick-index="${nextSlide}"]`).addClass('active-slide');
+}).on('afterChange', function(event, slick, currentSlide) {
+  startProgressBar();
+});
+
 // Add event listener for dot click
 $('.slick-dots li button').on('click', function() {
   let dotIndex = $(this).parent().index();
@@ -215,6 +206,7 @@ $('.slick-dots li button').on('click', function() {
 $(document).ready(function() {
   $('.text-list').slick('slickGoTo', 0);
 });
+
 
 
 
