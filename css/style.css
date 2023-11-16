@@ -815,7 +815,7 @@ top: 56%;
 }
 
 .map_wrapp{color: #fff; font-size: 20px;}
-.edge_map{    position: absolute; bottom: 5%; right:5%;}
+.edge_map{    position: absolute; bottom: 12%; right:5%;}
 
 .location.location.seoul{
     top: 25%;
@@ -1719,111 +1719,7 @@ footer{
         top:75%;
     }
 
-    .location{
-        padding: 8px 8px;
-        color: #fff;
-        font-size: 12px;
-    }
-
-    .location.orange-pointer::after,.location.left-pointer.blue-pointer::after,.location.white-pointer::after{
-        content: "";
-        width: 12px;
-        height: 12px;
-        left: -39px;
-    }
-
-    .location.right-pointer.blue-pointer::after{
-        width: 12px;
-        height: 12px;
-        right: -39px;
-    }
-
-    .location.dental {
-        top: 12%;
-        left: 46%;
-    }
-
-    .location.asan {
-        top: 17%;
-        left: 49%;
-    }
-
-    .location.ajou {
-        top: 22%;
-        left: 52%;
-    }
-
-    .location.cooperation {
-        top: 26%;
-        left: 53%;
-    }
-    .location.biobank {
-        top: 33%;
-        left: 56%;
-    }
-
-    .location.cancer {
-        top: 8%;
-        left: 46%;
-    }
-
-    .location.chungbuk {
-        top: 38%;
-        left: 57%;
-    }
-
-    .location.kyungpook {
-        top: 43%;
-        left: 57%;
-    }
-
-    .location.location.seoul {
-        top: 14%;
-        left: 17%;
-    }
-
-    .location.mary {
-        top: 18%;
-        left: 20%;
-        text-align: right;
-    }
-
-    .location.bucheon {
-        top: 24%;
-        left: 9%;
-    }
-
-    .location.Hwasun {
-        top: 32%;
-        left: 13%;
-    }
-
-    .location.inje {
-        top: 48%;
-        left: 59%;
-    }
-
-    .edge_map {
-        position: absolute;
-        bottom: 31%;
-        right: 5%;
-    }
-
-    .map_wrapp {
-        color: #fff;
-        font-size: 13px;
-    }
-
-    .edge_pointer {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: #0F1339;
-    }
-
-    .map-container{
-        height: 1000px;
-    }
+    
 
     .biobank_top{
         bottom: -12%;
@@ -1838,7 +1734,6 @@ footer{
     .slide_arrow_wrapper{
         top: 8%;
     }
-
 }
 
 
@@ -1888,6 +1783,112 @@ footer{
 
     .sample_list_right .right_span p {
         font-size: 30px;}
+
+        .location{
+            padding: 8px 8px;
+            color: #fff;
+            font-size: 12px;
+        }
+    
+        .location.orange-pointer::after,.location.left-pointer.blue-pointer::after,.location.white-pointer::after{
+            content: "";
+            width: 12px;
+            height: 12px;
+            left: -39px;
+        }
+    
+        .location.right-pointer.blue-pointer::after{
+            width: 12px;
+            height: 12px;
+            right: -39px;
+        }
+    
+        .location.dental {
+            top: 12%;
+            left: 46%;
+        }
+    
+        .location.asan {
+            top: 17%;
+            left: 49%;
+        }
+    
+        .location.ajou {
+            top: 22%;
+            left: 52%;
+        }
+    
+        .location.cooperation {
+            top: 26%;
+            left: 53%;
+        }
+        .location.biobank {
+            top: 33%;
+            left: 56%;
+        }
+    
+        .location.cancer {
+            top: 8%;
+            left: 46%;
+        }
+    
+        .location.chungbuk {
+            top: 38%;
+            left: 57%;
+        }
+    
+        .location.kyungpook {
+            top: 43%;
+            left: 57%;
+        }
+    
+        .location.location.seoul {
+            top: 14%;
+            left: 17%;
+        }
+    
+        .location.mary {
+            top: 18%;
+            left: 20%;
+            text-align: right;
+        }
+    
+        .location.bucheon {
+            top: 24%;
+            left: 9%;
+        }
+    
+        .location.Hwasun {
+            top: 32%;
+            left: 13%;
+        }
+    
+        .location.inje {
+            top: 48%;
+            left: 59%;
+        }
+    
+        .edge_map {
+            position: absolute;
+            bottom: 31%;
+            right: 5%;
+        }
+    
+        .map_wrapp {
+            color: #fff;
+            font-size: 13px;
+        }
+    
+        .edge_pointer {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #0F1339;
+        }
+    
+        .map-container{
+            height: 1000px;
+        }
 }
 
 
