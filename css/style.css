@@ -399,7 +399,7 @@ transform: translate(0,-50%);
     display: flex!important;
     align-items: center;
     position: absolute;
-    top: 65%;
+    top: 86%;
     left: 8%;
     column-gap: 30px;
 }
