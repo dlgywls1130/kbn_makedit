@@ -253,20 +253,39 @@ $('.rolling_slide').slick({
   
   //7.nav scroll
   $(document).ready(function() {
-    $('.nav_list a').click(function(e) {
-        e.preventDefault(); // 기본 이벤트 동작을 막음
+    var header = $('header');
+    var lastScrollTop = 0;
 
-        var target = $(this).attr('href'); // 클릭한 링크의 href 값을 가져옴
-        var targetPosition = $(target).offset().top - $('.hader_section').outerHeight(); // 헤더 높이만큼 뺀 위치 값을 가져옴
+    $(window).scroll(function() {
+      var st = $(this).scrollTop();
 
-        $('html, body').animate({
-            scrollTop: targetPosition
-        }, 1000); // 1초 동안 해당 위치로 스크롤
+      // 첫번째 섹션에서는 항상 헤더를 보임
+      if (st < 1000) {
+        header.removeClass('header_hidden');
+      } else {
+        // 스크롤이 멈추면 헤더를 숨김
+        clearTimeout($.data(this, 'scrollTimer'));
+        $.data(this, 'scrollTimer', setTimeout(function() {
+          header.addClass('header_hidden');
+        }, 250)); // 250ms 내에 스크롤이 멈추면 헤더를 숨김
+      }
+      
+      lastScrollTop = st;
     });
-});
 
+    // 메뉴 링크 클릭 시 부드러운 스크롤링 적용
+    $('.nav_list a').click(function(e) {
+      e.preventDefault();
 
+      var target = $(this).attr('href');
+      var targetPosition = $(target).offset().top;
 
+      $('html, body').animate({
+        scrollTop: targetPosition
+      }, 1000);
+    });
+  });
+  
   //8. scroll fade
   
   const spyEls = document.querySelectorAll('.scroll-spy')

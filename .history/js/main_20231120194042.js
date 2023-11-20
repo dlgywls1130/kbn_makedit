@@ -252,16 +252,51 @@ $('.rolling_slide').slick({
   
   
   //7.nav scroll
-  $(document).ready(function() {
-    $('.nav_list a').click(function(e) {
-        e.preventDefault(); // 기본 이벤트 동작을 막음
+  $(document).ready(function () {
+    var header = $('header');
+    var lastScrollTop = 0;
+    var scrolling = false;
 
-        var target = $(this).attr('href'); // 클릭한 링크의 href 값을 가져옴
-        var targetPosition = $(target).offset().top - $('.hader_section').outerHeight(); // 헤더 높이만큼 뺀 위치 값을 가져옴
+    $(window).scroll(function () {
+        scrolling = true;
+    });
+
+    setInterval(function () {
+        if (scrolling) {
+            hasScrolled();
+            scrolling = false;
+        }
+    }, 250);
+
+    function hasScrolled() {
+        var st = $(this).scrollTop();
+
+        if (Math.abs(lastScrollTop - st) <= 5) {
+            return;
+        }
+
+        if (st > lastScrollTop) {
+            // Scroll down
+            header.css('top', '-70px'); // Adjust this value based on your header height
+        } else {
+            // Scroll up
+            header.css('top', '0');
+        }
+
+        lastScrollTop = st;
+    }
+});
+
+$(document).ready(function () {
+    $('.nav_list a').click(function (e) {
+        e.preventDefault();
+
+        var target = $(this).attr('href');
+        var targetPosition = $(target).offset().top;
 
         $('html, body').animate({
             scrollTop: targetPosition
-        }, 1000); // 1초 동안 해당 위치로 스크롤
+        }, 1000);
     });
 });
 

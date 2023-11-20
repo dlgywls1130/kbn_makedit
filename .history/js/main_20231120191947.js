@@ -253,20 +253,37 @@ $('.rolling_slide').slick({
   
   //7.nav scroll
   $(document).ready(function() {
-    $('.nav_list a').click(function(e) {
-        e.preventDefault(); // 기본 이벤트 동작을 막음
+    var header = $('header');
+    var lastScrollTop = 0;
 
-        var target = $(this).attr('href'); // 클릭한 링크의 href 값을 가져옴
-        var targetPosition = $(target).offset().top - $('.hader_section').outerHeight(); // 헤더 높이만큼 뺀 위치 값을 가져옴
+    $(window).scroll(function() {
+      var st = $(this).scrollTop();
 
-        $('html, body').animate({
-            scrollTop: targetPosition
-        }, 1000); // 1초 동안 해당 위치로 스크롤
+      // Check if the user is scrolling up or down
+      if (st > lastScrollTop) {
+        // Scrolling down, hide the header
+        header.addClass('header_hidden');
+      } else {
+        // Scrolling up, show the header
+        header.removeClass('header_hidden');
+      }
+
+      lastScrollTop = st;
     });
-});
 
+    // Smooth scrolling when clicking on menu links
+    $('.nav_list a').click(function(e) {
+      e.preventDefault();
 
+      var target = $(this).attr('href');
+      var targetPosition = $(target).offset().top;
 
+      $('html, body').animate({
+        scrollTop: targetPosition
+      }, 1000);
+    });
+  });
+  
   //8. scroll fade
   
   const spyEls = document.querySelectorAll('.scroll-spy')

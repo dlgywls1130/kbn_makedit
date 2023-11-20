@@ -206,12 +206,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: transform 0.3s ease-in-out;
 }
-
-.header_hidden {
-    transform: translateY(-100%);
-  }
 
 .header_logo{
     width: 250px;
@@ -1506,8 +1501,6 @@ footer{
     color: #fff;
 }
 .distribution_wrap .slick-dots button:hover, .slick-dots .slick-active button{border-bottom: none;}
-
-.main_banner .slick-dots button:hover, .slick-dots .slick-active button{border-bottom: 5px solid rgba(255,255,255,1);}
 .distribution_wrap .slick-dots button{
     border-bottom: none;
     padding-bottom: 0px;
@@ -2483,7 +2476,7 @@ footer{
 .text-dual_list br{display: none;}
 
 .line_middle{
-    top: 57%!important;
+    top: 73%!important;
 }
 
 .text-list .slick-slide{height: 600px;}
@@ -2498,7 +2491,6 @@ left:95%!important;
 .slide_arrow_wrapper{
     margin-top: 2rem;
     top: 0;
-    bottom: -32%;
 }
 
 .biobank_content_descript {

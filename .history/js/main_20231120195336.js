@@ -257,7 +257,7 @@ $('.rolling_slide').slick({
         e.preventDefault(); // 기본 이벤트 동작을 막음
 
         var target = $(this).attr('href'); // 클릭한 링크의 href 값을 가져옴
-        var targetPosition = $(target).offset().top - $('.hader_section').outerHeight(); // 헤더 높이만큼 뺀 위치 값을 가져옴
+        var targetPosition = $(target).offset().top - $('.header_wrapper').outerHeight(); // 헤더 높이만큼 뺀 위치 값을 가져옴
 
         $('html, body').animate({
             scrollTop: targetPosition

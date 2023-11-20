@@ -212,7 +212,7 @@ header{
 .header_hidden {
     transform: translateY(-100%);
   }
-
+  
 .header_logo{
     width: 250px;
     height: 80px;
@@ -1506,8 +1506,6 @@ footer{
     color: #fff;
 }
 .distribution_wrap .slick-dots button:hover, .slick-dots .slick-active button{border-bottom: none;}
-
-.main_banner .slick-dots button:hover, .slick-dots .slick-active button{border-bottom: 5px solid rgba(255,255,255,1);}
 .distribution_wrap .slick-dots button{
     border-bottom: none;
     padding-bottom: 0px;
