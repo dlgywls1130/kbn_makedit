@@ -10,12 +10,13 @@
 
     <!-- slick css -->
     <link rel="stylesheet"  type="text/css" href="./css/slick.css">
+    <link rel="stylesheet"   href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.css">
 
 </head>
 <body>
 
     <!-- header -->
-    <header>
+    <header class="hader_section">
         <div class="header_wrapper">
             <div class="header_logo">
                 <a href="#">
@@ -25,7 +26,7 @@
             <ul class="nav_list">
                 <li><a href="#about"> About us</a></li>
                 <li><a href="#kbn">KBN</a></li>
-                <li><a href="#sample">Sample status</a></li>
+                <li><a href="#sample">Current Status</a></li>
                 <li><a href="#distribution">Distribution procedure</a></li>
                 <li><a href="#biobanks">KBN Biobanks</a></li>
                 <li class="mobile_lan">
@@ -61,7 +62,7 @@
                 <div class="slide_list">
                     <div class="slide_zoom  first-slide">
                         <div class="slide_bg_img">
-                            <img src="./image/main_slide1.jpg" alt="img">
+                            <img src="./image/main_slide1.jpeg" alt="img">
                         </div>
                         <div class="slide_content">
                             <h2 class="slide_title">
@@ -79,7 +80,7 @@
                 <div class="slide_list ">
                     <div class="slide_zoom second-slide">
                         <div class="slide_bg_img">
-                            <img src="./image/main_slide2.jpg" alt="img">
+                            <img src="./image/main_slide2.jpeg" alt="img">
                         </div>
                         <div class="slide_content">
                             <h2 class="slide_title">
@@ -97,7 +98,7 @@
                 <div class="slide_list ">
                     <div class="slide_zoom three-slide">
                         <div class="slide_bg_img">
-                            <img src="./image/main_slide3.jpg" alt="img">
+                            <img src="./image/main_slide3.jpeg" alt="img">
                         </div>
                         <div class="slide_content">
                             <h2 class="slide_title">
@@ -527,7 +528,7 @@
     <section id="sample" class="">
         <div class="sample_wrap">
             <div class="content_width">
-                <h2 class="section_title">Sample status <span>(as of December 31, 2022)</span></h2>
+                <h2 class="section_title">Current Status <span>(as of December 31, 2022)</span></h2>
             </div>
             <div class="sample_content scroll-spy">
                 <div class="sample_list back-to-position to-up delay-0">
@@ -536,7 +537,7 @@
                             <img src="./image/sample1.png" alt="img">
                         </div>
                         <div class="sample_list_title">
-                            Current Situation 
+                            Collection 
                         </div>
                     </div>
                     <div class="sample_list_right">
@@ -610,82 +611,93 @@
                         </p>
                     </div>
                 </div>
+
+                
                 <div class="text_slide back-to-position to-up delay-1">
                     <div class="text-list">
                         <div class="text_list_title">
-                            <div class="text_list_top">
-                                <span>1</span>
-                                <p>Search of human
-                                    <br>bioresources for
-                                    <br>distribution</p>
-                            </div>
-                            <div class="text-dual_list">
-                                Search for human bioresources
-                                <br>status on the KBN Portal
-                                <br>(Human Resources Search Page) 
-                            </div>
-  
-                        </div>
-                        <div class="text_list_title">
-                            <div class="text_list_top">
-                                <span>2</span>
-                                <p>Inquiry of human
-                                    <Br>bioresources for
-                                    <Br>distribution </p>
-                            </div>
-
-                            <div class="text-dual_list">
-                                Check the availability of
-                                <Br>resources available for
-                                <Br>distribution through KBN
-                                <Br>distribution support center
-    
-                            </div>
-
-                        </div>
-                        <div class="text_list_title">
-                            <div class="text_list_top">
-                                <span>3</span>
-                                <p>Application for
-                                    <Br>distribution </p>
-                            </div>
-                            <div class="text-dual_list">
-                                Fill out and submit the
-                                <Br>distribution application
-                                <Br>form through the KBN
-                                <Br>Portal
+                            <div class="text-slide_wrapper">
+                                <div class="text_list_top">
+                                    <span>1</span>
+                                    <p>Search of human
+                                        <br>bioresources for
+                                        <br>distribution</p>
+                                </div>
+                                <div class="text-dual_list">
+                                    Search for human bioresources
+                                    <br>status on the KBN Portal
+                                    <br>(Human Resources Search Page) 
+                                </div>
                             </div>
                         </div>
                         <div class="text_list_title">
-                            <div class="text_list_top">
-                                <span>4</span>
-                                <p>Distribution of
-                                    <Br>Bioresources </p>
+                            <div class="text-slide_wrapper">
+                                <div class="text_list_top">
+                                    <span>2</span>
+                                    <p>Inquiry of human
+                                        <Br>bioresources for
+                                        <Br>distribution </p>
+                                </div>
+
+                                <div class="text-dual_list">
+                                    Check the availability of
+                                    <Br>resources available for
+                                    <Br>distribution through KBN
+                                    <Br>distribution support center
+        
+                                </div>
                             </div>
 
-                            <div class="text-dual_list">
-                                The biobank reviews
-                                <br>the documents on the
-                                <br>application for distribution
-                                <br>and decides whether to
-                                <br>distribute or not
+                        </div>
+                        <div class="text_list_title">
+                            <div class="text-slide_wrapper">
+                                <div class="text_list_top">
+                                    <span>3</span>
+                                    <p>Application for
+                                        <Br>distribution </p>
+                                </div>
+                                <div class="text-dual_list">
+                                    Fill out and submit the
+                                    <Br>distribution application
+                                    <Br>form through the KBN
+                                    <Br>Portal
+                                </div>
                             </div>
                         </div>
                         <div class="text_list_title">
-                            <div class="text_list_top">
-                                <span>5</span>
-                                <p>Submission of
-                                    <Br>achievements </p>
-                            </div>
+                            <div class="text-slide_wrapper">
+                                <div class="text_list_top">
+                                    <span>4</span>
+                                    <p>Distribution of
+                                        <Br>Bioresources </p>
+                                </div>
 
-                            <div class="text-dual_list">
-                                Results and outcomes
-                                <Br>achieved using the
-                                <Br>distributed resources,
-                                <Br>if any, should be informed
-                                <Br>KBN Portal within three
-                                <Br>months after the
-                                <Br>achievement 
+                                <div class="text-dual_list">
+                                    The biobank reviews
+                                    <br>the documents on the
+                                    <br>application for distribution
+                                    <br>and decides whether to
+                                    <br>distribute or not
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text_list_title">
+                            <div class="text-slide_wrapper">
+                                <div class="text_list_top">
+                                    <span>5</span>
+                                    <p>Submission of
+                                        <Br>achievements </p>
+                                </div>
+
+                                <div class="text-dual_list">
+                                    Results and outcomes
+                                    <Br>achieved using the
+                                    <Br>distributed resources,
+                                    <Br>if any, should be informed
+                                    <Br>KBN Portal within three
+                                    <Br>months after the
+                                    <Br>achievement 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1757,7 +1769,7 @@
                         <li class="footer_text">kbnysvc@gmail.com</li>
                         <li class="footer_phone">+82 -31-546-2715</li>
                         <li class="footer_text">Monday-Friday 8:30am ~ 5:30pm</li>
-                        <li class="footer_text">(Saturday and Sunday, Holidays : ClOSED)</li>
+                        <li class="footer_text">(Saturday and Sunday, Holidays : CLOSED)</li>
                     </ul>
                     <ul class="footer-logo-wrap">
                         <li class="footer-logo1"><img src="./image/kcda1.png" alt="icon"></li>
@@ -1790,19 +1802,18 @@
                     <h3 class="footer_title">
                         RELATED SITE
                     </h3>
-                    <div class="link_site">
-                        <a href="https://biobank.nih.go.kr/cmm/main/engMainPage.do" target="_blank" class="site_link">
-                            <img src="./image/kcda2.png" alt="link">
-                        </a>
-                        <a href="https://biobank.nih.go.kr/cmm/main/engMainPage.do" target="_blank" class="site_link">
-                            <img src="./image/nih.png" alt="link">
-                        </a>
-
+                    <div class="select-box">
+                        <select class="select" id="mySelect">
+                            <option data-display="RELATED SITE">RELATED SITE</option>
+                            <option value="KDCA" data-link="https://www.kdca.go.kr/index.es?sid=a3#a">KDCA</option>
+                            <option value="National Biobank of Korea" data-link="https://biobank.nih.go.kr/cmm/main/engMainPage.do">National Biobank of Korea (nih.go.kr)</option>
+                        </select>
                     </div>
                 </div>
 
             </div>
         </div>
+
         <div class="footer_copy">
             <div class="footer_copy_wrap">
                 <p>YONSEI UNIVERSITY, YONGIN SEVERANCE HOSPITAL. ALL RIGHTS RESERVED </p>
@@ -1821,6 +1832,23 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./js/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
     <script src="./js/main.js"></script>
+
+    <script>
+       $(document).ready(function(){
+    // selectbox styling
+    $('select').niceSelect();
+
+    // handle select change event
+    $('#mySelect').change(function(){
+        var selectedOption = $(this).find(':selected');
+        var link = selectedOption.data('link');
+
+        // open the link in a new tab
+        window.open(link, '_blank');
+    });
+});
+    </script>
 </body>
 </html>
