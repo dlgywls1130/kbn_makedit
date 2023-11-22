@@ -2613,3 +2613,9 @@ left:95%!important;
     transform: rotate(0deg);
     top: 10%;
 }
+
+@media (min-width:1300px) and (max-width:1500px) {
+    .edge_map{
+        bottom:31%;
+    }
+}
