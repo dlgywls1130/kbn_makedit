@@ -2614,7 +2614,7 @@ left:95%!important;
     top: 10%;
 }
 
-@media (min-width:1300px) and (max-width:1500px) {
+@media (min-width:1300px) and (max-width:1700px) {
     .edge_map{
         bottom:15%;
     }
