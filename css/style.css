@@ -1369,7 +1369,7 @@ footer{
     width: 100%;
     justify-content: flex-start;
     align-items: flex-start;
-    column-gap: 15rem;
+    column-gap: 11rem;
 }
 
 .footer_text{
