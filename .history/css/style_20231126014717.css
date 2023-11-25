@@ -1724,26 +1724,10 @@ footer{
 }
 }
 
-@media (min-width:769px) and (max-width: 900px){
-    .line_middle {
-        top: 79%!important;
-    }
-    }
-
-@media (min-width:901px) and (max-width: 999px){
-    .line_middle {
-        top: 74%!important;
-    }
-    }
-
-@media (min-width:1000px) and (max-width: 1199px){
-    .line_middle {
-        top: 65%!important;
-    }
-    }
-
 @media (min-width:769px) and (max-width:1400px){
-
+    .line_middle {
+        top: 70%!important;
+    }
 
     .main_banner .slick-dots{
         top: 85%;
@@ -1766,7 +1750,7 @@ footer{
 
 
     .slide_arrow_wrapper{
-        bottom: -27%;
+        top: 8%;
     }
 
 

@@ -1738,7 +1738,7 @@ footer{
 
 @media (min-width:1000px) and (max-width: 1199px){
     .line_middle {
-        top: 65%!important;
+        top: 75%!important;
     }
     }
 
@@ -1766,7 +1766,7 @@ footer{
 
 
     .slide_arrow_wrapper{
-        bottom: -27%;
+        top: 8%;
     }
 
 
