@@ -1564,6 +1564,11 @@ footer{
 
 /* tablet */
 @media  screen and (max-width:1400px) {
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
     section{margin-bottom:50px;}
 
     
