@@ -1869,7 +1869,7 @@ footer{
 
     .footer-logo-wrap{
         width: 100%;
-        margin-top: 1.5rem;
+        
     }
     .footer-logo1 {
         width: 170px;
@@ -1886,7 +1886,7 @@ footer{
         width: 100%;
     }
 
-    .footer_copy_wrap{    flex-direction: column;}
+    
 }
 
 
