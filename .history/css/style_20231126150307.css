@@ -484,7 +484,6 @@ top: 56%;
     justify-content: space-between;
     padding: 0 50px;
     box-sizing: border-box;
-    flex-wrap: wrap;
 }
 
 .acodian_list{
@@ -822,7 +821,7 @@ top: 56%;
 }
 
 .map_wrapp{color: #fff; font-size: 20px;}
-.edge_map{    position: absolute; bottom: 5%; right:5%;}
+.edge_map{    position: absolute; bottom: 12%; right:5%;}
 
 .location.location.seoul{
     top: 25%;
@@ -1722,25 +1721,25 @@ footer{
 
 @media (min-width:1200px) and (max-width: 1400px){
 .line_middle {
-    top: 45%!important;
+    top: 59%!important;
 }
 }
 
 @media (min-width:769px) and (max-width: 900px){
     .line_middle {
-        top: 58%!important;
+        top: 79%!important;
     }
     }
 
 @media (min-width:901px) and (max-width: 999px){
     .line_middle {
-        top: 56%!important;
+        top: 74%!important;
     }
     }
 
 @media (min-width:1000px) and (max-width: 1199px){
     .line_middle {
-        top: 50%!important;
+        top: 65%!important;
     }
     }
 
@@ -1792,74 +1791,69 @@ footer{
     }
 
     .location.dental {
-        top: 23%;
+        top: 12%;
         left: 46%;
     }
 
     .location.asan {
-        top: 29%;
+        top: 17%;
         left: 49%;
     }
 
     .location.ajou {
-        top: 41%;
+        top: 22%;
         left: 52%;
     }
 
     .location.cooperation {
-        top: 35%;
+        top: 26%;
         left: 53%;
     }
     .location.biobank {
-        top: 47%;
+        top: 33%;
         left: 56%;
     }
 
     .location.cancer {
-        top: 17%;
+        top: 8%;
         left: 46%;
     }
 
     .location.chungbuk {
-        top: 53%;
+        top: 38%;
         left: 57%;
     }
 
     .location.kyungpook {
-        top: 59%;
+        top: 43%;
         left: 57%;
     }
 
     .location.location.seoul {
-        top: 16%;
-        left: 23%;
+        top: 14%;
+        left: 17%;
     }
 
     .location.mary {
-        top: 21%;
-        left: 22%;
+        top: 18%;
+        left: 20%;
         text-align: right;
     }
 
     .location.bucheon {
-        top: 29%;
-        left: 19%;
+        top: 24%;
+        left: 9%;
     }
 
     .location.Hwasun {
-        top: 35%;
-        left: 20%;
+        top: 32%;
+        left: 13%;
     }
 
     .location.inje {
-        top: 66%;
+        top: 48%;
         left: 59%;
     }
-
-    .text-dual_list{margin-top:120px; font-size:18px;}
-    .distribution_wrap{padding: 50px 0;}
-
-    .section_title{font-size:60px;}
 }
 
 
@@ -1912,7 +1906,7 @@ footer{
     
         .edge_map {
             position: absolute;
-            bottom: 2%;
+            bottom: 31%;
             right: 5%;
         }
     
@@ -1942,12 +1936,6 @@ footer{
 
 @media (min-width:769px) and (max-width:1200px){
     .footer_contain{    column-gap: 0rem;}
-
-    .slide_content .slide_title{    font-size: 51px;}
-    .slide_content .slide_sub{    font-size: 22px;}
-    .text_list_title p{    font-size: 24px;}
-    .text_list_title span{    width: 30px;
-        height: 30px; font-size:22px;}
 }
 
 @media screen and (max-width:1024px){
@@ -2523,7 +2511,7 @@ footer{
 .text-dual_list br{display: none;}
 
 .line_middle{
-    top: 57%!important;
+    top: 70%!important;
 }
 
 .text-list .slick-slide{height: 600px;}
@@ -2616,7 +2604,7 @@ left:95%!important;
     margin:0 20px;
 }
 
-.logo_loop{    overflow-x: hidden;}
+
 
 }
 
@@ -2656,6 +2644,6 @@ left:95%!important;
 
 @media (min-width:1300px) and (max-width:1700px) {
     .edge_map{
-        bottom:8%;
+        bottom:15%;
     }
 }

@@ -484,7 +484,6 @@ top: 56%;
     justify-content: space-between;
     padding: 0 50px;
     box-sizing: border-box;
-    flex-wrap: wrap;
 }
 
 .acodian_list{
@@ -1722,25 +1721,25 @@ footer{
 
 @media (min-width:1200px) and (max-width: 1400px){
 .line_middle {
-    top: 45%!important;
+    top: 59%!important;
 }
 }
 
 @media (min-width:769px) and (max-width: 900px){
     .line_middle {
-        top: 58%!important;
+        top: 79%!important;
     }
     }
 
 @media (min-width:901px) and (max-width: 999px){
     .line_middle {
-        top: 56%!important;
+        top: 74%!important;
     }
     }
 
 @media (min-width:1000px) and (max-width: 1199px){
     .line_middle {
-        top: 50%!important;
+        top: 65%!important;
     }
     }
 
@@ -1802,7 +1801,7 @@ footer{
     }
 
     .location.ajou {
-        top: 41%;
+        top: 22%;
         left: 52%;
     }
 
@@ -1855,11 +1854,6 @@ footer{
         top: 66%;
         left: 59%;
     }
-
-    .text-dual_list{margin-top:120px; font-size:18px;}
-    .distribution_wrap{padding: 50px 0;}
-
-    .section_title{font-size:60px;}
 }
 
 
@@ -1942,12 +1936,6 @@ footer{
 
 @media (min-width:769px) and (max-width:1200px){
     .footer_contain{    column-gap: 0rem;}
-
-    .slide_content .slide_title{    font-size: 51px;}
-    .slide_content .slide_sub{    font-size: 22px;}
-    .text_list_title p{    font-size: 24px;}
-    .text_list_title span{    width: 30px;
-        height: 30px; font-size:22px;}
 }
 
 @media screen and (max-width:1024px){
@@ -2523,7 +2511,7 @@ footer{
 .text-dual_list br{display: none;}
 
 .line_middle{
-    top: 57%!important;
+    top: 70%!important;
 }
 
 .text-list .slick-slide{height: 600px;}
@@ -2616,7 +2604,7 @@ left:95%!important;
     margin:0 20px;
 }
 
-.logo_loop{    overflow-x: hidden;}
+
 
 }
 
